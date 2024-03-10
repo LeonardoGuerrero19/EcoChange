@@ -13,7 +13,7 @@
     <div class="container">
         <form  method="post" action="send_password_reset.php">
         <label for="email">Correo Electrónico:</label>
-        <input type="email" id="email" name="email" required>
+        <input type="email" id="user_email" name="user_email" required>
         <input type="submit" value="Enviar Solicitud">
         </form>
     </div>

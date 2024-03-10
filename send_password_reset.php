@@ -8,10 +8,15 @@ $token_hash = hash("sha256", $token);
 
 $expiry = date("Y-m-d H:i:s", time() +60 * 30);
 
-$mysqli = require __DIR__ . "/database.php";
+$mysqli = require __DIR__ . "/conection.php";
 
 $sql = "UPDATE user
         SET reset_token_hash = ?,
             reset_token_expires_at = ?
         WHERE user_email = ?";
-$stmt = $mysqli->prepare($sql);
+
+$stmt = $con->prepare($sql);
+
+$stmt->bind_param("sss", $token_hash, $expiry, $email);
+
+$stmt->execute();
