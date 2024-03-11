@@ -20,16 +20,16 @@
     <link rel="stylesheet" href="resources/css/all.css">
     <!-- js -->
     <script src="resources/js/bootstrap.bundle.min.js"></script>
-    <title>Panel General</title>
+    <title>Perfil de usuario</title>
 </head>
 <body>
-    <nav class="navbar bg-body-tertiary">
+<nav class="navbar bg-body-tertiary">
         <?php echo Head(); ?>
     </nav>
 
     <div class="wrapper">
 
-        <?php echo Sidebar(); ?>
+        <?php echo SidebarProfile(); ?>
 
         <div class="main-content">
             <div class="content">

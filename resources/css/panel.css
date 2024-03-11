@@ -29,11 +29,11 @@ img {
     border-color: var(--dark-green);
 }
 
-.loginBtn{
+.Btn{
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
 }
 
-.loginBtn a {
+.Btn a {
     margin: 0 10px;
     color: #fff;
 }
@@ -76,6 +76,7 @@ img {
     margin-right: 10px;
 }
 
+
 /* desplazante*/
 .dropdown {
     margin: 0 15px;
@@ -90,7 +91,6 @@ img {
     border: none;
     cursor: pointer;
 }
-
 
 .dropdown-content {
     display: none;
@@ -210,6 +210,22 @@ img {
     background-color: var(--gray);
 }
 
+/* user profile */
+.profile {
+    text-align: center;
+    width: 100%;
+    margin: 0 15px;
+}
+
+.profile p{
+    font-size: 18px;
+    margin: 8px 0;
+    text-align: center;
+}
+
+button #btnProfile {
+    background-color: red;
+}
 
 /* icons */
 .arrow-box {
