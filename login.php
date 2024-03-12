@@ -24,7 +24,7 @@
                 exit();
             }
         }else {
-            echo "<script> window.alert('¡Correo o contraseña incorrectos!');</script>";
+            echo "<script> window.alert('¡Correo o contraseña incorrectos!'); window.location='register.php'</script>";
         }
     }
 ?>
