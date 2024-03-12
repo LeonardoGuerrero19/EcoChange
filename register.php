@@ -51,7 +51,7 @@
                 <span>O usa tu contraseña y correo</span>
                 <input type="email" name="email" placeholder="Correo Electrónico" required>
                 <input type="password" name="password" placeholder="Contraseña" required>
-                <a href="cambio_contra.php">¿Olvidaste tu contraseña?</a>
+                <a href="change_password/cambio_contra.php">¿Olvidaste tu contraseña?</a>
                 <button name="log-in">Iniciar sesión</button>
             </form>
         </div>

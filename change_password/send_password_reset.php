@@ -1,5 +1,7 @@
 <?php
 
+require "../conection.php";
+
 $email = $_POST["user_email"]; //Verificar email
 
 $token = bin2hex(random_bytes(16)); //Se general el token aleatorio. Con ayuda de randombytes se genera un token aleatorio.
@@ -7,8 +9,6 @@ $token = bin2hex(random_bytes(16)); //Se general el token aleatorio. Con ayuda d
 $token_hash = hash("sha256", $token);
 
 $expiry = date("Y-m-d H:i:s", time() +60 * 30);
-
-$mysqli = require __DIR__ . "/conection.php";
 
 $sql = "UPDATE user
         SET reset_token_hash = ?,
@@ -22,14 +22,14 @@ $stmt->bind_param("sss", $token_hash, $expiry, $email);
 $stmt->execute();
 
 if ($con->affected_rows){ #Si se detectan lineas afectadas entonces:
-    $mail = require __DIR__ . "/mailer.php"; #Se toma la configuracion del archivo mail.
+    $mail = require "../mailer.php"; #Se toma la configuracion del archivo mail.
 
     $mail->setFrom("foroecochange@outlook.com"); #configurar desde donde enviamos el correo
     $mail->addAddress($email); #Pasamos la direccion a donde mandaremos el correo.
     $mail->Subject = "Requerimiento de cambio de contraseña"; #<---Cuerpo del correo que se envia.
     $mail->Body = <<<END
 
-    Click <a href="http://localhost/EcoChange/reset-password.php?token=$token">Aquí</a>
+    Click <a href="http://localhost/EcoChange/change_password/reset-password.php?token=$token">Aquí</a>
     para restablecer tú contraseña.
 
     END;#<---Cuerpo del correo que se envia.
