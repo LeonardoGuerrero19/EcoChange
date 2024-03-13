@@ -30,7 +30,26 @@ function DropdownActive() {
     }
     }
 
-function OptionsActive() {
-    var options = document.getElementById("Options");
-    options.classList.toggle("active");
+function toggleOptions() {
+    var optionsContent = document.getElementById("optionsContent");
+    optionsContent.classList.toggle("active");
 }
+    
+function showForm() {
+    var floatingForm = document.getElementById("BckgForm");
+    floatingForm.style.display = "block";
+}
+
+function closeForm() {
+    var floatingForm = document.getElementById("BckgForm");
+    floatingForm.style.display = "none";
+}
+
+function showTopics() {
+    var floatingForm = document.getElementById("topics");
+    if (floatingForm.style.display === "none") {
+        floatingForm.style.display = "block";
+    } else {
+        floatingForm.style.display = "none";
+    }
+} 

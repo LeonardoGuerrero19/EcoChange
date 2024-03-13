@@ -83,6 +83,10 @@
             </div>
             <div class="options">
                 <div class="profile">
+                    <div id="cir">
+                        <div id="cir2">
+                        </div>
+                    </div>
                     <p><b><?php echo $_SESSION["user_name"] ?></b></p>
                     <hr>
                     <p><b>250</b><br>publicaciones</p>

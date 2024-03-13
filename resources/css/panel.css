@@ -34,6 +34,7 @@ img {
 }
 
 .Btn a {
+    font-size: 15px;
     margin: 0 10px;
     color: #fff;
 }
@@ -189,7 +190,7 @@ img {
 }
 
 
-#Options.active .options-content {
+#optionsContent.active {
     display: block;
 }
 
@@ -201,13 +202,35 @@ img {
 }
 
 .content {
-    width: 65%;
+    width: 60%;
     margin: 15px 0 0 5%;
-    border-radius: 50px;
+    border-radius: 30px;
+    border: 2px solid var(--dark-green);
+    padding: 10px 15px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-.content:hover {
+.btnPubs {
     background-color: var(--gray);
+    border: none;
+    border-radius: 50px;
+    padding: 5px;
+}
+
+#optsPubs {
+    margin-top: 5px;
+    text-align: center;
+}
+
+.optsPubs {
+    color: #fff;
+    font-size: 15px;
+    padding: 5px 10px;
+    margin: 0 10px;
+}
+
+.optsPubs i {
+    margin-right: 5px;
 }
 
 /* user profile */
@@ -217,15 +240,28 @@ img {
     margin: 0 15px;
 }
 
+#cir {
+    margin: auto;
+    padding: 5px;
+    background-color: var(--dark-green);
+    width: 100px; height: 100px;
+    border-radius: 50%;
+}
+
+#cir2 {
+    margin: auto;
+    background-image: url('../images/default.png');
+    background-size: cover;
+    width: 90px; height: 90px; 
+    border-radius: 50%;
+}
+
 .profile p{
     font-size: 18px;
     margin: 8px 0;
     text-align: center;
 }
 
-button #btnProfile {
-    background-color: red;
-}
 
 /* icons */
 .arrow-box {
