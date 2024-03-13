@@ -28,23 +28,30 @@ if (strtotime($user["reset_token_expires_at"]) <= time()) {
     die("token ha caducado");
 }
 
-if (strlen($_POST["user_password"]) < 8){
-    die("La contraseña debe tener almenos 8 caracteres");
+$user_password = $_POST["user_password"];
+$password_confirm = $_POST["password_confirm"];
+
+if (strlen($user_password) < 8){
+    die("La contraseña debe tener al menos 8 caracteres");
 }
 
-if( ! preg_match("/[a-z]/i", $_POST["user_password"])){
-    die("La contraseña debe tener almenos una letra");
+if( ! preg_match("/[a-z]/i", $user_password)){
+    die("La contraseña debe tener al menos una letra");
 }
 
-if( ! preg_match("/[0-9]/", $_POST["user_password"])){
-    die("La contraseña debe tener almenos un numero");
+if( ! preg_match("/[0-9]/", $user_password)){
+    die("La contraseña debe tener al menos un número");
 }
 
-if ($_POST["user_password"] !== $_POST["password_confirm"]) {
+if ($user_password !== $password_confirm) {
     die("Las contraseñas no coinciden");
 }
 
-$user_password = md5($_POST["user_password"]);
+if (password_verify($user_password, $user['user_password'])) { // Utilizamos password_veridy para obtener la contraseña hasheada y compararla.
+    die("La nueva contraseña debe ser diferente de la anterior");
+}
+
+$user_password_hashed = password_hash($user_password, PASSWORD_DEFAULT);
 
 $sql = "UPDATE user
         SET user_password = ?,
@@ -54,8 +61,9 @@ $sql = "UPDATE user
 
 $stmt = $con->prepare($sql);
 
-$stmt->bind_param("ss", $user_password, $user["user_id"]);
+$stmt->bind_param("ss", $user_password_hashed, $user["user_id"]);
 
 $stmt->execute();
 
-echo"Contraseña actualizada. Intenta loguear denuevo";
+echo "Contraseña actualizada. Intenta loguear de nuevo";
+?>

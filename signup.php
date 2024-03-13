@@ -16,9 +16,15 @@ if(isset($_POST['sign-up'])) {
     if($result->num_rows >= 1) {
         echo "<script> window.alert('¡El email ya está en uso!'); window.location='register.php'</script>";
     } else {
-        // Insertar el usuario solo si el correo electrónico no está en uso
+        // Vamos a verificar que la contra tenga minimo 8 caracteres y un numero.
+        if(!preg_match("/^(?=.*\d)(?=.*[a-zA-Z]).{8,}$/", $password)){
+            echo "<script> window.alert('La contraseña debe contener al menos 8 caracteres, incluyendo al menos un número.'); window.location='register.php'</script>";
+            exit();
+        }
+        // Insertar el usuario solo si el correo electrónico no está en uso y se acepta la contraseña.
+        $password_hashed = password_hash($password, PASSWORD_DEFAULT); // Haseo de la contraseña
         $stmt = $con->prepare("INSERT INTO user (user_name, user_email, user_password, user_rol) VALUES (?, ?, ?, 'usuario_registrado')");
-        $stmt->bind_param("sss", $name, $email, $password);
+        $stmt->bind_param("sss", $name, $email, $password_hashed);
 
         if ($stmt->execute()) {
             echo "<script> window.alert('¡Registro Exitoso!'); window.location='register.php'</script>";
