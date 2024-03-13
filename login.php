@@ -6,12 +6,17 @@
         $email = $_POST["email"];
         $password = md5($_POST["password"]);
 
-        $cap = "SELECT * FROM user WHERE user_email = '$email' AND user_password = '$password'";
-        $result = mysqli_query($con, $cap);
+        $stmt= $con->prepare("SELECT * FROM user WHERE   user_email = ? AND user_password = ?");
+        $stmt->bind_param("ss", $email, $password);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-        if (mysqli_num_rows($result) > 0) {
+        #$cap = "SELECT * FROM user WHERE user_email = '$email' AND user_password = '$password'";
+        #$result = mysqli_query($con, $cap);
+
+        if ($result->num_rows > 0) {
             // Obtener el tipo de usuario de la consulta
-            $row = mysqli_fetch_assoc($result);
+            $row = $result->fetch_assoc();
             $user_rol = $row['user_rol'];
             $user_name = $row['user_name'];
 
