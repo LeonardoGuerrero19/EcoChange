@@ -6,22 +6,22 @@
 <html>
   <head>
     <link rel="stylesheet" href="view_adm.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   </head>
   
   <body>
     <header> 
     </header>
     <nav class="menu">
-        <img src="/resources/images/logo.png" alt="Logo">
+        <img src="/resources/images/logo.png"  class="rounded mx-auto d-block" alt="Logo">
       
       <div class="perfil">
-        <div class="foto"> <i class="bi bi-person-circle"></i>
+        <div class="foto">
+          <img src="/resources/images/foto.png">
           <div class="user">
             <a>@usuario.33</a>
           </div>
         </div>
-      </div>
+     
       <h2>EcoChange</h2>
      
       <a onclick="desplazarfiltro">
@@ -35,6 +35,7 @@
         TEMAS DISPONIBLES
       </a>
     </nav>
+    <section>
     <div class="apartado">
       <div class="filtros">
         <label for="filtro-estado">Filtrar por:</label>
@@ -48,6 +49,30 @@
         </select>
       </div>
     </div>
+    <div class="PublicacionesLeft">
+      <div class="publicacion">
+        <h2>Publicación 1</h2>
+        <p>Contenido de la publicación 1.........................................................</p>
+        <button class="pub">Ver</button>
+      </div>
+      <div class="publicacion">
+        <h2>Publicación 2</h2>
+        <p>Contenido de la publicación 2.........................................................</p>
+        <button class="pub">Ver</button>
+      </div>
+      <div class="PublicacionesRight">
+        <div class="publicacion">
+          <h2>Publicación 3</h2>
+          <p>Contenido de la publicación 3..........................................................</p>
+          <button class="pub">Ver</button>
+        </div>
+        <div class="publicacion">
+          <h2>Publicación 4</h2>
+          <p>Contenido de la publicación 4.........................................................</p>
+          <button class="pub">Ver</button>
+        </div>
+      </div>
+ | </section>
   </body>
   <script>
   const filtroEstado = document.getElementById('filtro-estado');
