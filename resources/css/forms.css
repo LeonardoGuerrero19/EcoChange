@@ -18,7 +18,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 45%; height: 80%;
-    padding: 30px;
+    padding: 25px;
     border-radius: 30px;
 }
 
@@ -82,7 +82,7 @@ h1 {
 }
 
 .textForm {
-    height: 180px;
+    height: 190px;
     margin: 10px 0;
 }
 
