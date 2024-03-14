@@ -82,7 +82,7 @@ h1 {
 }
 
 .textForm {
-    height: 210px;
+    height: 180px;
     margin: 10px 0;
 }
 
@@ -96,8 +96,22 @@ textarea {
     color: #000;
 }
 
-textarea::placeholder {
+textarea::placeholder{
     font-size: 20px;
+    color: #000;
+}
+
+input[type="text"] {
+    width: 100%;
+    border-radius: 50px;
+    margin-top: 10px;
+    padding: 1px 10px;
+    outline: none;
+    border: 2px solid var(--green);
+}
+
+input::placeholder {
+    font-size: 15px;
     color: #000;
 }
 
@@ -136,12 +150,13 @@ textarea::placeholder {
 
 button.closeButton {
     position: absolute;
-    top: 15px;
-    right: 30px;
+    top: 70px;
+    right: 400px;
     background: none;
     border: none;
     font-size: 30px;
     cursor: pointer;
+    z-index: 999;
 }
 
 .closeButton i {

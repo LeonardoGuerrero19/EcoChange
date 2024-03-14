@@ -12,12 +12,15 @@
         if (mysqli_num_rows($result) > 0) {
             // Obtener el tipo de usuario de la consulta
             $row = mysqli_fetch_assoc($result);
+            $user_id = $row['user_id'];
             $user_rol = $row['user_rol'];
             $user_name = $row['user_name'];
 
             // Iniciar sesión y redirigir según el tipo de usuario
+            $_SESSION["user_id"] = $user_id;
             $_SESSION["user_rol"] = $user_rol;
             $_SESSION["user_name"] = $user_name;
+
 
             if ($user_rol == 'usuario_registrado') {
                 header("Location: panel.php");

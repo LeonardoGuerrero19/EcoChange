@@ -30,11 +30,11 @@ function DropdownActive() {
     }
     }
 
-function toggleOptions() {
-    var optionsContent = document.getElementById("optionsContent");
-    optionsContent.classList.toggle("active");
+function OptionsActive() {
+    var options = document.getElementById("Options");
+    options.classList.toggle("active");
 }
-    
+
 function showForm() {
     var floatingForm = document.getElementById("BckgForm");
     floatingForm.style.display = "block";

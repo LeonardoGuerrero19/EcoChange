@@ -18,7 +18,7 @@ img {
     background: url(https://cdn0.iconfinder.com/data/icons/slim-square-icons-basics/100/basics-19-32.png) no-repeat 10px 50%;
     width: 500px;
     background-color: #fff;
-    border: 2px solid #fff;;
+    border: 2px solid #fff;
     border-radius: 50px;
     outline: none;
     padding: 5px 5px 5px 45px;
@@ -154,7 +154,7 @@ img {
     bottom: 50px;
     border-radius: 30px;
     padding: 3px 15px;
-    z-index: 1;
+    z-index: 999;
     box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
 }
 
@@ -189,8 +189,7 @@ img {
     font-size: 15px;
 }
 
-
-#optionsContent.active {
+#Options.active .options-content {
     display: block;
 }
 

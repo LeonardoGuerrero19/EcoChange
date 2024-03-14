@@ -44,13 +44,13 @@
     </div>
 
     <div id="BckgForm">
-        <form id="FormCreate">
+    <button onclick="closeForm()" class="closeButton"><i class="bi bi-x-circle"></i></button>
+        <form id="FormCreate" action="create_post.php" method="post">
             <div id="contentForm">
                 <h1>Crear publicación</h1>
-                <button onclick="closeForm()" class="closeButton"><i class="bi bi-x-circle"></i></button>
                 <hr class="pForm">
                 <div class="headForm">
-                    <div class="userForm"><?php echo $_SESSION["user_name"] ?></div>
+                    <div class="userForm"><?php echo $_SESSION["user_name"]; ?></div>
                     <input type="button" class="topicsForm" value="TEMAS" onclick="showTopics()">
                     <div id="topics">
                         <?php
@@ -64,12 +64,14 @@
                                 </button>";
                                 }
                             } 
-
                         ?>
                     </div>
                 </div>
+                <div class="titleForm">
+                    <input type="text" name="title-post" placeholder="Escribe un título">
+                </div>
                 <div class="textForm">
-                <textarea placeholder="Comparte con la comunidad"></textarea>
+                    <textarea placeholder="Comparte con la comunidad" name="text-post"></textarea>
                 </div>
                 <div class="optionsForm">
                     <p>Agrega a tu publicación</p>
@@ -78,7 +80,7 @@
                         <button class="iconForm"><i class="bi bi-camera-reels"></i></button>
                     </div>
                 </div>
-                <button class="Btn" id="PubForm">Publicar</button>
+                <button class="Btn" id="PubForm" name="create">Publicar</button>
             </div>
         </form>
     </div>
