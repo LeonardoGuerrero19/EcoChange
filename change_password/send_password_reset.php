@@ -22,7 +22,7 @@ $stmt->bind_param("sss", $token_hash, $expiry, $email);
 $stmt->execute();
 
 if ($con->affected_rows){ #Si se detectan lineas afectadas entonces:
-    $mail = require "../mailer.php"; #Se toma la configuracion del archivo mail.
+    $mail = require "../phpmailer/mailer.php"; #Se toma la configuracion del archivo mail.
 
     $mail->setFrom("foroecochange@outlook.com"); #configurar desde donde enviamos el correo
     $mail->addAddress($email); #Pasamos la direccion a donde mandaremos el correo.
