@@ -2,6 +2,7 @@
     session_start();
     require "conection.php";
     require "functions/side-bar.php";
+    require "functions/header.php";
 
 ?>
 
@@ -23,25 +24,7 @@
 </head>
 <body>
     <nav class="navbar bg-body-tertiary">
-        <div class="container-fluid">
-            <img src="resources/images/logo.png" class="navbar-brand" alt="">
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-            </form>
-            <?php
-            if(!isset($_SESSION['user_name'])) {
-                echo '
-                <button class="loginBtn">
-                    <a href="register.php">Inicia Sesión</a>
-                </button>';
-            } else {
-                echo '
-                <button class="loginBtn">
-                    <a href="">Notificaciones</a>
-                </button>';
-            }
-            ?>
-        </div>
+        <?php echo Head(); ?>
     </nav>
 
     <div class="wrapper">
