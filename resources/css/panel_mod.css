@@ -1,0 +1,306 @@
+nav {
+    background-color: var(--green);
+    z-index: 1;
+}
+
+.container-fluid {
+    padding: 0 50px;  
+}
+
+img {
+    margin: 0;
+    width: 140px;
+}
+
+
+/* buscador */
+.form-control {
+    background: url(https://cdn0.iconfinder.com/data/icons/slim-square-icons-basics/100/basics-19-32.png) no-repeat 10px 50%;
+    width: 500px;
+    background-color: #fff;
+    border: 2px solid #fff;
+    border-radius: 50px;
+    outline: none;
+    padding: 5px 5px 5px 45px;
+    position: static;
+}
+
+.form-control:hover {
+    border-color: var(--dark-green);
+}
+
+.Btn{
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+.Btn a {
+    font-size: 15px;
+    margin: 0 10px;
+    color: #fff;
+}
+
+
+/* barra lateral */
+.wrapper {
+    display: flex;
+    position: relative;
+}
+
+.wrapper .sidebar {
+    background-color: var(--green);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    position: fixed;
+    width: 18%;
+    height: 100%;
+    z-index: 0;
+}
+
+.home {
+    margin: 15px 15px 0;
+    padding: 3px 15px;
+    border-radius: 50px;
+    font-size: 20px;
+    text-align: center;
+    transition: 0.4s;
+}
+
+.home:hover {
+    background-color: var(--dark-green);
+    color: #fff;
+}
+
+.home:hover i, .home:hover a {
+    color: #fff;
+}
+
+.home i {
+    margin-right: 10px;
+}
+
+
+/* desplazante*/
+.dropdown {
+    margin: 0 15px;
+}
+
+.dropbtn {
+    background: transparent;
+    width: 100%;
+    text-align: start;
+    letter-spacing: 0.3cap;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    margin-top: 5px;
+    z-index: 1;
+}
+
+.dropdown-content a {
+    padding: 5px 10px;
+    font-size: 15px;
+    display: block;
+}
+
+.dropdown.active .dropdown-content {
+    display: block;
+}
+
+#theme {
+    border-radius: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    transition: 0.4s;
+    margin-bottom: 50px;
+}
+
+#theme:hover {
+    color: #fff;
+    background-color: var(--dark-green);
+}
+
+#theme:hover a {
+    color: #fff;
+}
+
+/* button user */
+.options {
+    position: absolute;
+    bottom: 80px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.userBtn {
+    background-color: transparent;
+    border: 2px solid var(--dark-green);
+    margin: 0 15px;
+    cursor: pointer;
+    padding: 3px 15px;
+    transition: background-color 0.3s ease;
+}
+
+.options-content {
+    display: none;
+    margin: 0 12px;
+    background-color: #fff;
+    position: absolute;
+    bottom: 50px;
+    border-radius: 30px;
+    padding: 3px 15px;
+    z-index: 999;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+.options-content::before {
+    content: "";
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-top-color: #fff;
+}
+
+.opt {
+    background: transparent;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: 600;
+}
+
+.opt:hover, .opt a:hover {
+    width: 100%;
+    color: var(--dark-green);
+    background-color: var(--gray);
+}
+
+.a, .opt a{
+    margin-left: 10px;
+    font-size: 15px;
+}
+
+#Options.active .options-content {
+    display: block;
+}
+
+
+/* publicaciones */
+.wrapper .main-content {
+    width: 100%;
+    margin-left: 18%;
+}
+
+/* publicaciones */
+.content {
+    width: 70%; /* Ajusta el ancho según tus necesidades */
+    margin: 15px auto; /* Centra el contenido horizontalmente */
+    border-radius: 15px; /* Redondea los bordes */
+    border: 1px solid #ccc; /* Añade un borde para resaltar */
+    padding: 20px; /* Añade espacio interior */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Añade sombra para resaltar */
+    background-color: #fff; /* Fondo blanco */
+}
+
+.post-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.post {
+    flex: 0 0 calc(50% - 20px); /* Dos cajas por fila, con un espacio de 20px entre ellas */
+    margin: 10px; /* Espacio entre las cajas */
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.post h2 {
+    color: #333;
+}
+
+.post p {
+    color: #666;
+}
+
+.post img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+
+/*--------------------Fin del estilo a post---------------*/
+.btnPubs {
+    background-color: var(--gray);
+    border: none;
+    border-radius: 50px;
+    padding: 5px;
+}
+
+#optsPubs {
+    margin-top: 5px;
+    text-align: center;
+}
+
+.optsPubs {
+    color: #fff;
+    font-size: 15px;
+    padding: 5px 10px;
+    margin: 0 10px;
+}
+
+.optsPubs i {
+    margin-right: 5px;
+}
+
+/* user profile */
+.profile {
+    text-align: center;
+    width: 100%;
+    margin: 0 15px;
+}
+
+#cir {
+    margin: auto;
+    padding: 5px;
+    background-color: var(--dark-green);
+    width: 100px; height: 100px;
+    border-radius: 50%;
+}
+
+#cir2 {
+    margin: auto;
+    background-image: url('../images/default.png');
+    background-size: cover;
+    width: 90px; height: 90px; 
+    border-radius: 50%;
+}
+
+.profile p{
+    font-size: 18px;
+    margin: 8px 0;
+    text-align: center;
+}
+
+
+/* icons */
+.arrow-box {
+    text-align: end;
+    margin-top: -30px;
+}
+
+.icon {
+    margin-left: 10px;
+}

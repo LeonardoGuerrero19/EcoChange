@@ -98,9 +98,25 @@ if (isset($_POST['log-in'])) {
             $_SESSION["user_rol"] = $user_rol;
             $_SESSION["user_name"] = $user_name;
 
-            if ($user_rol == 'usuario_registrado') {
-                header("Location: panel.php");
-                exit();
+            // Redirigir según el rol del usuario
+            switch ($user_rol) {
+                case 'administrador':
+                    header("Location: view_adm.php");
+                    exit();
+                    break;
+                case 'moderador':
+                    // Redirigir a la página de moderador
+                    header("Location: dashboard.php");
+                    exit();
+                    break;
+                case 'usuario_registrado':
+                    // Redirigir a la página de usuario registrado
+                    header("Location: panel.php");
+                    exit();
+                    break;
+                default:
+                    // Si no se reconoce el rol, redirigir a una página de error o mostrar un mensaje de error
+                    break;
             }
         } else {
             // Mostrar alerta SweetAlert2 para contraseña incorrecta
