@@ -194,15 +194,46 @@ img {
 }
 
 
-/* publicaciones */
+/* mostrar publicaciones */
 .wrapper .main-content {
-    width: 100%;
+    width: 55%;
     margin-left: 18%;
 }
 
+.main-pubs {
+    margin: 15px 0 0 10%;
+    border-radius: 30px;
+    border: none;
+    padding: 10px 15px;
+}
+
+.main-pubs:hover {
+    background-color: var(--gray);
+}
+
+#theme-section {
+    background-color: var(--dark-green);
+    color: #fff;
+    border-radius: 50px;
+    padding: 3px 5px;
+}
+
+.title {
+    margin: 5px 0;
+    font-size: 20px;
+}
+
+#hr-pubs {
+    margin: 15px 0 15px 10%;
+}
+
+
+
+
+/* crear publicacion */
 .content {
-    width: 60%;
-    margin: 15px 0 0 5%;
+    width: auto;
+    margin: 15px 0 0 10%;
     border-radius: 30px;
     border: 2px solid var(--dark-green);
     padding: 10px 15px;
