@@ -234,11 +234,43 @@ img {
     color: #666;
 }
 
+p.topic {
+    /* Estilos para el nombre del tema */
+    color: var(--dark-green); /* Cambia el color del texto */
+    text-align: right;
+    font-size: 14px;
+}
+
+/* Estilos para el botón "Aceptar Publicación" */
+.post button {
+    background-color: var(--green); /* Cambiar el color de fondo */
+    color: var(--dark-green); /* Cambiar el color del texto a blanco */
+    border: none; /* Eliminar el borde */
+    padding: 8px 20px; /* Ajustar el padding */
+    border-radius: 5px; /* Agregar bordes redondeados */
+    cursor: pointer; /* Cambiar el cursor al pasar sobre el botón */
+    transition: background-color 0.3s ease; /* Agregar transición suave al cambiar el color de fondo */
+}
+
+.post button:hover {
+    background-color: var(--dark-green); /* Cambiar el color de fondo al pasar el cursor */
+    color: #fff;
+}
+
+.post button:focus {
+    outline: none; /* Eliminar el contorno al hacer clic en el botón */
+}
+
+.post button span {
+    color: rgba(255, 255, 255, 0.9); /* Cambiar el color del texto del botón para un mejor contraste */
+}
+
 .post img {
     max-width: 100%;
     height: auto;
     border-radius: 10px;
 }
+
 
 
 /*--------------------Fin del estilo a post---------------*/

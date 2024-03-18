@@ -20,15 +20,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contenido = $_POST['contenido'];
     $imagen = $_FILES['imagen']['name'];
     $temp = $_FILES['imagen']['tmp_name'];
-    $tema_id = $_POST['tema'];
+    $topic_id = $_POST['tema'];
 
     // Mover el archivo a una ubicación permanente
     $ruta_imagen = "resources/images/" . $imagen;
     move_uploaded_file($temp, $ruta_imagen);
 
     // Query para insertar la publicación en la base de datos
-    $sql = "INSERT INTO post (user_id, post_titulo, post_contenido, imagen, post_creacion, post_ultima_edicion, tema_id) 
-            VALUES ('$user_id', '$titulo', '$contenido', '$ruta_imagen', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '$tema_id')";
+    $sql = "INSERT INTO post (user_id, post_titulo, post_contenido, imagen, post_creacion, post_ultima_edicion, topic_id, estado) 
+            VALUES ('$user_id', '$titulo', '$contenido', '$ruta_imagen', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, '$topic_id', pendiente)";
 
     if ($con->query($sql) === TRUE) {
         echo "Publicación agregada correctamente.";
