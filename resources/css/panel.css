@@ -1,5 +1,7 @@
 nav {
     background-color: var(--green);
+    position: fixed;
+    top: 0; width: 100%;
     z-index: 1;
 }
 
@@ -198,6 +200,8 @@ img {
 .wrapper .main-content {
     width: 55%;
     margin-left: 18%;
+    /*display: flex;
+    flex-wrap: wrap;*/
 }
 
 .main-pubs {
@@ -214,13 +218,20 @@ img {
 #theme-section {
     background-color: var(--dark-green);
     color: #fff;
-    border-radius: 50px;
-    padding: 3px 5px;
+    border-radius: 50px;    
+    padding: 3px 10px;
 }
 
-.title {
+.text-pub {
+    width: 100%;
     margin: 5px 0;
     font-size: 20px;
+    word-wrap: break-word; 
+}
+
+.image-pub img{
+    border-radius: 10px;
+    width: 100%;
 }
 
 #hr-pubs {

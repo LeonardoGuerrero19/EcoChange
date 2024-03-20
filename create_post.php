@@ -7,23 +7,18 @@ if (isset($_POST['create'])) {
     $text = $_POST["text-post"];
     $topic = $_POST["topic-post"];
 
-    // Obtener el ID de usuario de la sesión actual
-    $user_id = $_SESSION['user_id'];
+    // Verificar si el usuario está iniciado sesión y obtener su ID
+    if (isset($_SESSION['user_id'])) {
+        $user_id = $_SESSION['user_id'];
 
     // Verificar si se ha subido un archivo
-    if(isset($_FILES["image-post"])) {
-        $image = $_FILES["image-post"]["tmp_name"]; // Nombre temporal del archivo
+    if(isset($_FILES["image-post"]) && $_FILES["image-post"]["error"] == 0) {
+        $image = addslashes(file_get_contents($_FILES["image-post"]["tmp_name"]));
     } else {
         $image = '';
     }
-        
-    if(isset($_FILES["video-post"])) {
-        $video = $_FILES["video-post"]["tmp_name"]; // Nombre temporal del archivo
-    } else {
-        $video = '';
-    }
 
-    $sql = "INSERT INTO post (user_id, post_titulo, post_contenido, post_tema, post_image, post_video) VALUES ('$user_id', '$title', '$text', '$topic', '$image', '$video')";
+    $sql = "INSERT INTO post (user_id, post_titulo, post_contenido, post_tema, post_image) VALUES ('$user_id', '$title', '$text', '$topic', '$image')";
 
     if (mysqli_query($con, $sql)) {
         // Publicación guardada exitosamente
@@ -32,5 +27,6 @@ if (isset($_POST['create'])) {
         // Error al guardar la publicación
         echo "Error al crear la publicación: " . mysqli_error($con);
     }
+}
 }
 ?>

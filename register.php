@@ -97,6 +97,13 @@ if (isset($_POST['log-in'])) {
             // Iniciar sesión y redirigir según el tipo de usuario
             $_SESSION["user_rol"] = $user_rol;
             $_SESSION["user_name"] = $user_name;
+            
+            if (isset($_SESSION['user_id'])) {
+                $user_id = $_SESSION['user_id'];
+            } else {
+                echo "Error: El usuario no ha iniciado sesión correctamente.";
+            }
+
 
             if ($user_rol == 'usuario_registrado') {
                 header("Location: panel.php");
@@ -175,6 +182,8 @@ if(isset($_POST['sign-up'])) {
         $stmt->bind_param("sss", $name, $email, $password_hashed);
 
         if ($stmt->execute()) {
+            // Registro exitoso, establece la sesión
+            $_SESSION["user_id"] = $con->insert_id; // Establece el user_id en la sesión
             echo "<script>
                     Swal.fire({
                         icon: 'success',

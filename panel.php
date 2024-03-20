@@ -48,17 +48,19 @@
                                 <?php echo $row["user_name"]; ?>
                                 <div id="theme-section"> <?php echo $row["post_tema"]; ?></div>
                             </div>
-                            <div class="title">
+                            <div class="text-pub">
                                 <b><?php echo $row["post_titulo"]; ?></b>
                             </div>
-                            <div>
+                            <div class="text-pub">
                                 <?php echo $row["post_contenido"]; ?>
+                            </div>
+                            <div class="image-pub">
+                            <img src="data:image/jpg/png/jpeg;base64,<?php echo base64_encode($row['post_image']);?>"/>
                             </div>
                         </div>
                         <hr id="hr-pubs">
                         
                     <?php
-                        echo "Imagen: " . $row["post_image"] . "<br>";
                     }
                 } else {
                     echo "No hay publicaciones.";
