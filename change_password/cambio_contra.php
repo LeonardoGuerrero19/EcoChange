@@ -9,14 +9,17 @@
     <title>Cambiar Contraseña</title>
 </head>
 <body>
-    <h2>Cambiar Contraseña</h2>
     <div class="container">
+        <h2>Cambio de Contraseña</h2>
+        <div style="justify-content:center;display: grid;">
+        <img src="../resources/images/email.svg" class="email-icon">
+        </div>
+        <h1>Ingrese el correo de su cuenta para reestablecer su contraseña</h1>
         <form action="../change_password/send_password_reset.php" method="post">
         <label for="email">Correo Electrónico:</label>
         <input type="email" id="user_email" name="user_email" required>
         <input type="submit" value="Enviar Solicitud">
         </form>
     </div>
-    
 </body>
 </html>

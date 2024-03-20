@@ -33,24 +33,30 @@ if (strtotime($user["reset_token_expires_at"]) <= time()) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../resources/css/all.css">
+    <link rel="stylesheet" href="../resources/css/reset_pass.css">
     <title>Cambio-contraseña</title>
 </head>
 <body>
-    <h1>Reset Password</h1>
+    <div class="container-wrapper">
+        <div class="container">
+        <h1>Reset Password</h1>
+        <img src="../resources/images/pass.svg" class="pass-icon">
+        <form method="post" action="process-reset-password.php">
 
-    <form method="post" action="process-reset-password.php">
+            <input type="hidden" name="token" value="<?= htmlspecialchars($token) ?>">
+            
+            <label for="password">Nueva contraseña:</label>
+            <input type="password" id="user_password" name="user_password">
 
-        <input type="hidden" name="token" value="<?= htmlspecialchars($token) ?>">
-        
-        <label for="password">Su nueva contraseña:</label>
-        <input type="password" id="user_password" name="user_password">
+            <label for="password_confirm">Repita su contraseña:</label>
+            <input type="password" id="password_confirm" name="password_confirm">
 
-        <label for="password_confirm">Repita su contraseña</label>
-        <input type="password" id="password_confirm" name="password_confirm">
-
-        <button>Confirmar y enviar</button>
-    </form>
-    
+            <button>Confirmar y enviar</button>
+        </form>
+    </div>
+    <div class="image-container">
+        <img src="../resources/images/pass3.svg" class="pass-image">
+    </div>
+</div>
 </body>
 </html>
