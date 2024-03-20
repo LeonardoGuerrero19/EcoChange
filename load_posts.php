@@ -33,14 +33,29 @@ if(isset($_POST['status'])) {
             } else {
                 echo "<p>No se encontró el tema para esta publicación.</p>";
             }
-            echo "<form action='marcar_revisado.php' method='post'>";
-            echo "<input type='hidden' name='post_id' value='" . $row["post_id"] . "'>";
-            echo "<button type='submit'>Aceptar Publicación</button>";
-            echo "</form>";
+            // Botón para marcar post como revisada.
+            if($row["estado"] === "pendiente"){
+                echo "<form action='marcar_revisado.php' method='post'>";
+                echo "<input type='hidden' name='post_id' value='" . $row["post_id"] . "'>";
+                echo "<button type='submit'>Aceptar Publicación</button>";
+                echo "</form>";
+
+                echo "<form action='rechazar_posts.php' method='post'>";
+                echo "<input type='hidden' name='post_id' value='" . $row["post_id"] . "'>";
+                echo "<button type='submit'>Rechazar publicación</button>";
+                echo "</form>";
+
+            } else{
+                // Botón para revertir a pendiente si el estado es revisado
+                echo "<form action='revertir_pendiente.php' method='post'>";
+                echo "<input type='hidden' name='post_id' value='" . $row["post_id"] . "'>";
+                echo "<button type='submit'>Revertir a Pendiente</button>";
+                echo "</form>";
+            }
             echo "</div>";
         }
     } else {
-        echo "No se encontraron publicaciones con el estado '$status'.";
+        echo "<div class='no_post'> No se han encontrado publicaciones para mostrar aquí =*) '$status'.</div>";
     }
 
     // Cerrar la conexión
