@@ -26,7 +26,11 @@
                     <div id="theme">
                         <i class="bi bi-globe-americas icon"></i>
                         <div><a href="#">Acción por el clima</a></div>
-                    </div> 
+                    </div>
+                    <div id="theme">
+                        <i class="bi bi-globe-americas icon"></i>
+                        <div><a href="dashboard.php">Ir a dashboard</a></div>
+                    </div>  
                 </div>
             </div>
             <?php
