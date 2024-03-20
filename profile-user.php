@@ -45,7 +45,7 @@
 
     <div id="BckgForm">
     <button onclick="closeForm()" class="closeButton"><i class="bi bi-x-circle"></i></button>
-        <form id="FormCreate" action="create_post.php" method="post">
+        <form id="FormCreate" action="create_post.php" method="post" enctype="multipart/form-data">
             <div id="contentForm">
                 <h1>Crear publicación</h1>
                 <hr class="pForm">
@@ -59,15 +59,16 @@
 
                             if ($result->num_rows > 0) {
                                 while($row = $result->fetch_assoc()) {
-                                echo "<button class='opt'>
-                                <div><a>". $row["topic_name"] . "</a></div>
-                                </button>";
+                                    echo "<div id='topic-options'>";
+                                    echo "<input type='radio' class='btn-options' name='topic-post' value='". $row["topic_name"] ."'>";
+                                    echo "<label class='btn btn-text'>". $row["topic_name"] ."</label>";
+                                    echo "</div>";
                                 }
-                            } 
+                            }  
                         ?>
                     </div>
                 </div>
-                <div class="titleForm">
+                <div>
                     <input type="text" name="title-post" placeholder="Escribe un título">
                 </div>
                 <div class="textForm">
@@ -76,8 +77,10 @@
                 <div class="optionsForm">
                     <p>Agrega a tu publicación</p>
                     <div>
-                        <button class="iconForm"><i class="bi bi-image"></i></button>&nbsp;&nbsp;&nbsp;
-                        <button class="iconForm"><i class="bi bi-camera-reels"></i></button>
+                    <input type="file" id="fileImage" name="image-post" accept="image/*" />
+                    <label for="fileImage"><i class="bi bi-image"></i></label>
+                    <input type="file" id="fileVideo" name="video-post" accept="video/*" />
+                    <label for="fileVideo"><i class="bi bi-camera-reels"></i></label>
                     </div>
                 </div>
                 <button class="Btn" id="PubForm" name="create">Publicar</button>

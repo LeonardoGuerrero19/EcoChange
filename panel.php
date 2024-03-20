@@ -18,6 +18,7 @@
     <!-- css -->
     <link rel="stylesheet" href="resources/css/panel.css">
     <link rel="stylesheet" href="resources/css/all.css">
+    <link rel="stylesheet" href="resources/css/forms.css">
     <!-- js -->
     <script src="resources/js/bootstrap.bundle.min.js"></script>
     <title>Panel General</title>
@@ -32,8 +33,39 @@
         <?php echo Sidebar(); ?>
 
         <div class="main-content">
-            <div class="content">
-                hola
+            <?php 
+                $sql = "SELECT *, user.user_name AS user_name FROM post
+                INNER JOIN user ON post.user_id = user.user_id";
+        
+                $res = mysqli_query($con, $sql);
+        
+                if (mysqli_num_rows($res) > 0) {
+                    // Imprimir los datos de cada publicación
+                    while ($row = mysqli_fetch_assoc($res)) {
+                    ?>
+                        <div class="main-pubs">
+                            <div class="headForm">
+                                <?php echo $row["user_name"]; ?>
+                                <div id="theme-section"> <?php echo $row["post_tema"]; ?></div>
+                            </div>
+                            <div class="title">
+                                <b><?php echo $row["post_titulo"]; ?></b>
+                            </div>
+                            <div>
+                                <?php echo $row["post_contenido"]; ?>
+                            </div>
+                        </div>
+                        <hr id="hr-pubs">
+                        
+                    <?php
+                        echo "Imagen: " . $row["post_image"] . "<br>";
+                    }
+                } else {
+                    echo "No hay publicaciones.";
+                }
+            ?>
+                </div>
+                
             </div>
         </div>
     </div>
