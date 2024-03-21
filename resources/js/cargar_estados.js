@@ -33,27 +33,3 @@ function loadPosts(status) {
         }
     });
 }
-// Función para revertir el estado de una publicación a pendiente
-function revertToPending(postId) {
-    $.ajax({
-        url: 'revertir_pendiente.php',
-        method: 'POST',
-        data: { post_id: postId },
-        success: function(response) {
-            if (response.success) {
-                //Obtener el estado actual de los posts para cargarlos correctamente.
-                var activeButton =$('.active-button').attr('id');
-                var status =activeButton === 'showPending' ? 'pendiente' : 'revisado';
-
-                //Funcion para cargar los pots según el estado del boton activo.
-                loadPosts(status); // Aquí asumimos que quieres cargar los posts revisados nuevamente
-            } else {
-                // Si hubo un error, mostrar un mensaje de error
-                alert(response.message);
-            }
-        },
-        error: function(xhr, status, error) {
-            console.error(error);
-        }
-    });
-}

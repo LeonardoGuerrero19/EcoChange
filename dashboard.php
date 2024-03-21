@@ -37,10 +37,9 @@
         <!-- Mostrar publicaciones -->
         <div class="main-content">
             <div class="estado">
-            <button id="showReviewed" onclick="loadPosts('revisado')">Revisadas</button>
-            <button id="showPending" onclick="loadPosts('pendiente')">Pendientes</button>
-            <button id="showInactive" onclick="loadPosts('inactivo')">Inactivas</button>
-
+                <button id="showReviewed" onclick="loadPosts('revisado')">Revisadas</button>
+                <button id="showPending" onclick="loadPosts('pendiente')">Pendientes</button>
+                <button id="showInactive" onclick="loadPosts('inactivo')">Inactivas</button>
             </div>
 
             <div class="post-container">

@@ -2,26 +2,22 @@
 // Incluir el archivo de conexión a la base de datos
 require "conection.php";
 
-// Verificar si se ha enviado un estado a través de la solicitud POST
-if(isset($_POST['status'])) {
+if(isset($_POST['status'])) { //Verificar si se ha enviado uno de los estados por medio de  solicitud POST
     $status = $_POST['status'];
 
-    // Consulta SQL para seleccionar las publicaciones según el estado especificado
-    $sql = "SELECT * FROM post WHERE estado = '$status'";
+    $sql = "SELECT * FROM post WHERE estado = '$status'";// Consulta SQL para seleccionar las publicaciones según el estado especificado
     $result = mysqli_query($con, $sql);
 
-    // Verificar si se encontraron resultados
-    if (mysqli_num_rows($result) > 0) {
-        // Mostrar las publicaciones
-        while ($row = mysqli_fetch_assoc($result)) {
-            // Agregar la información que desees mostrar
+
+    if (mysqli_num_rows($result) > 0) { // Si se encontraron resultado entonces: Muestra las publicaciones 
+        while ($row = mysqli_fetch_assoc($result)) { // Mostrar las publicaciones
+            // Mostramos la informacion de las publicaicones que requerimos.
             echo "<div class='post'>";
             echo "<h2>" . $row["post_titulo"] . "</h2>";
             echo "<p>" . $row["post_contenido"] . "</p>";
             if (!empty($row["imagen"])) {
                 echo "<img src='" . $row["imagen"] . "' alt='Imagen de la publicación'>"; // Mostrar imagen
             }
-
             // Obtener el nombre del tema
             $topic_id = $row["topic_id"];
             $query_topic = "SELECT topic_name FROM topics WHERE topic_id = $topic_id";
@@ -33,20 +29,19 @@ if(isset($_POST['status'])) {
             } else {
                 echo "<p>No se encontró el tema para esta publicación.</p>";
             }
-            // Botón para marcar post como revisada.
+            // Si el estado del post es pendiente apareceran los botones para aceptar o inactivar  la publicación.
             if($row["estado"] === "pendiente"){
-                echo "<form action='marcar_revisado.php' method='post'>";
+                echo "<form action='aceptar_post.php' method='post'>";
                 echo "<input type='hidden' name='post_id' value='" . $row["post_id"] . "'>";
                 echo "<button type='submit'>Aceptar Publicación</button>";
                 echo "</form>";
 
-                echo "<form action='rechazar_posts.php' method='post'>";
+                echo "<form action='rechazar_post.php' method='post'>";
                 echo "<input type='hidden' name='post_id' value='" . $row["post_id"] . "'>";
                 echo "<button type='submit'>Rechazar publicación</button>";
                 echo "</form>";
 
-            } else{
-                // Botón para revertir a pendiente si el estado es revisado
+            } else{ // si el estado del post es diferente a 'pendiente' aparece el boton que cambia de cualquier estado a 'pendiente'.
                 echo "<form action='revertir_pendiente.php' method='post'>";
                 echo "<input type='hidden' name='post_id' value='" . $row["post_id"] . "'>";
                 echo "<button type='submit'>Revertir a Pendiente</button>";

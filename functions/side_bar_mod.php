@@ -13,7 +13,7 @@
             </div>
             <div id="theme">
                 <i class="bi bi-water icon"></i>
-                <div><a href="adm_usuarios.php">Administrar Usuarios</a></div>
+                <div><a href="admin_users.php">Administrar Usuarios</a></div>
             </div> 
             <div id="theme">
                 <i class="bi bi-globe-americas icon"></i>

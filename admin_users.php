@@ -33,10 +33,14 @@
         <!-- Mostrar usuarios -->
         <div class="main-content">
             <h1>Administrar Usuarios</h1>
-            <div class="usuarios-container">
+            <div class="rol">
+                <button id="showInactiveUser" onclick="loadUsers('inactive')">Cuentas Inactivas</button>
+            </div>
+            
+            <div class="users-container">
                 <?php
                     // Incluir el archivo para cargar usuarios
-                    require "cargar_usuarios.php";
+                    require "load_users.php";
                 ?>
             </div>
         </div>
