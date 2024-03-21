@@ -53,17 +53,3 @@ function showTopics() {
         floatingForm.style.display = "none";
     }
 }
-
-function saveTopic(topicName) {
-    $.ajax({
-        type: 'POST',
-        url: 'create_post.php', // Ruta al script PHP que procesa y guarda los datos en la base de datos
-        data: { topicName: topicName },
-        success: function(response) {
-            console.log('Guardado exitosamente en la base de datos.');
-        },
-        error: function(xhr, status, error) {
-            console.error('Error al guardar en la base de datos:', error);
-        }
-    });
-}

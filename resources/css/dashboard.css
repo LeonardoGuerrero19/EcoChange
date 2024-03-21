@@ -1,0 +1,43 @@
+nav {
+    background-color: var(--green);
+    top: 0; width: 100%;
+    z-index: 1;
+}
+
+.container-fluid {
+    padding: 0 50px;  
+}
+
+img {
+    margin: 0;
+    width: 140px;
+}
+
+
+/* buscador */
+.form-control {
+    background: url(https://cdn0.iconfinder.com/data/icons/slim-square-icons-basics/100/basics-19-32.png) no-repeat 10px 50%;
+    width: 500px;
+    background-color: #fff;
+    border: 2px solid #fff;
+    border-radius: 50px;
+    outline: none;
+    padding: 5px 5px 5px 45px;
+    position: static;
+}
+
+.form-control:hover {
+    border-color: var(--dark-green);
+}
+
+
+.Btn{
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+.Btn a {
+    font-size: 15px;
+    margin: 0 10px;
+    color: #fff;
+}
+

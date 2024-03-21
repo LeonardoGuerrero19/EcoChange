@@ -73,42 +73,54 @@
     </div>
 
     <?php
+
     #--------PROCESO DEL LOGIN--------#
 if (isset($_POST['log-in'])) {
     $email = $_POST["email"];
     $user_password = $_POST["password"]; 
 
-    // Recuperar la contraseña hasheada desde la base de datos
-    $stmt= $con->prepare("SELECT user_password, user_rol, user_name FROM user WHERE user_email = ?");
+    // Recuperar la contraseña hasheada y el ID del usuario desde la base de datos
+    $stmt= $con->prepare("SELECT user_id, user_password, user_rol, user_name FROM user WHERE user_email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
-        $hashed_password_from_database = $row['user_password']; // Pedir la contraseña de la base de datos para comprarla
+        $hashed_password_from_database = $row['user_password']; // Obtener la contraseña de la base de datos
+        $user_id = $row['user_id']; // Obtener el ID del usuario
 
         // Verificar si la contraseña proporcionada coincide con la contraseña hasheada almacenada
         if (password_verify($user_password, $hashed_password_from_database)) {
-            // Si coinciden entonces se asignan el rol y el usuario:
+            // Si coinciden, se asigna el rol y el usuario:
             $user_rol = $row['user_rol'];
             $user_name = $row['user_name'];
 
             // Iniciar sesión y redirigir según el tipo de usuario
             $_SESSION["user_rol"] = $user_rol;
             $_SESSION["user_name"] = $user_name;
-            
-            if (isset($_SESSION['user_id'])) {
-                $user_id = $_SESSION['user_id'];
-            } else {
-                echo "Error: El usuario no ha iniciado sesión correctamente.";
+            $_SESSION["user_id"] = $user_id; // Guardar el ID del usuario en la sesión
+
+            switch ($user_rol) {
+                case 'administrador':
+                    header("Location: view_adm.php");
+                    exit();
+                    break;
+                case 'moderador':
+                    // Redirigir a la página de moderador
+                    header("Location: dashboard/dashboard.php");
+                    exit();
+                    break;
+                case 'usuario_registrado':
+                    // Redirigir a la página de usuario registrado
+                    header("Location: panel.php");
+                    exit();
+                    break;
+                default:
+                    // Si no se reconoce el rol, redirigir a una página de error o mostrar un mensaje de error
+                    break;
             }
 
-
-            if ($user_rol == 'usuario_registrado') {
-                header("Location: panel.php");
-                exit();
-            }
         } else {
             // Mostrar alerta SweetAlert2 para contraseña incorrecta
             echo '<script language="javascript">
@@ -140,6 +152,7 @@ if (isset($_POST['log-in'])) {
         </script>';
     }
 }
+
 
 #-----------------PROCESO DEL REGISTRO---------------------#
 if(isset($_POST['sign-up'])) {
@@ -177,28 +190,30 @@ if(isset($_POST['sign-up'])) {
                 </script>";
         } else{
             // Insertar el usuario solo si el correo electrónico no está en uso y se acepta la contraseña.
-        $password_hashed = password_hash($password, PASSWORD_DEFAULT); // Haseo de la contraseña
-        $stmt = $con->prepare("INSERT INTO user (user_name, user_email, user_password, user_rol) VALUES (?, ?, ?, 'usuario_registrado')");
-        $stmt->bind_param("sss", $name, $email, $password_hashed);
+            $password_hashed = password_hash($password, PASSWORD_DEFAULT); // Haseo de la contraseña
+            $stmt = $con->prepare("INSERT INTO user (user_name, user_email, user_password, user_rol) VALUES (?, ?, ?, 'usuario_registrado')");
+            $stmt->bind_param("sss", $name, $email, $password_hashed);
 
-        if ($stmt->execute()) {
-            // Registro exitoso, establece la sesión
-            $_SESSION["user_id"] = $con->insert_id; // Establece el user_id en la sesión
-            echo "<script>
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Registro exitoso',
-                        text: '¡Tu registro ha sido exitoso!'
-                    }).then(function() {
-                        window.location='register.php';
-                    });
-                </script>";
-        } else {
-            echo "<script> window.alert('Error al registrar al usuario');</script>";
+            if ($stmt->execute()) {
+                // Registro exitoso, establecer la sesión y guardar el ID del usuario
+                $user_id = mysqli_insert_id($con); // Obtener el ID del usuario insertado
+                $_SESSION["user_id"] = $user_id; // Establecer el user_id en la sesión
+
+                echo "<script>
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Registro exitoso',
+                            text: '¡Tu registro ha sido exitoso!'
+                        }).then(function() {
+                            window.location='register.php';
+                        });
+                    </script>";
+            } else {
+                echo "<script> window.alert('Error al registrar al usuario');</script>";
+            }
         }
     }
-    }
-        }
+}
         
 
 ?>

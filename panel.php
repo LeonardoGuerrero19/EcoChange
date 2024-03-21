@@ -42,25 +42,26 @@
                 if (mysqli_num_rows($res) > 0) {
                     // Imprimir los datos de cada publicación
                     while ($row = mysqli_fetch_assoc($res)) {
-                    ?>
-                        <div class="main-pubs">
-                            <div class="headForm">
-                                <?php echo $row["user_name"]; ?>
-                                <div id="theme-section"> <?php echo $row["post_tema"]; ?></div>
+                        if($row["estado"] === "revisado"){
+                            ?>
+                            <div class="main-pubs">
+                                <div class="headForm">
+                                    <?php echo $row["user_name"]; ?>
+                                    <div id="theme-section"> <?php echo $row["post_tema"]; ?></div>
+                                </div>
+                                <div class="text-pub">
+                                    <b><?php echo $row["post_titulo"]; ?></b>
+                                </div>
+                                <div class="text-pub">
+                                    <?php echo $row["post_contenido"]; ?>
+                                </div>
+                                <div class="image-pub">
+                                <img src="data:image/jpg/png/jpeg;base64,<?php echo base64_encode($row['post_image']);?>"/>
+                                </div>
                             </div>
-                            <div class="text-pub">
-                                <b><?php echo $row["post_titulo"]; ?></b>
-                            </div>
-                            <div class="text-pub">
-                                <?php echo $row["post_contenido"]; ?>
-                            </div>
-                            <div class="image-pub">
-                            <img src="data:image/jpg/png/jpeg;base64,<?php echo base64_encode($row['post_image']);?>"/>
-                            </div>
-                        </div>
-                        <hr id="hr-pubs">
-                        
-                    <?php
+                            <hr id="hr-pubs">
+                            <?php
+                        }
                     }
                 } else {
                     echo "No hay publicaciones.";

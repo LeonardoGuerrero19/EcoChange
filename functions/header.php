@@ -23,4 +23,18 @@
     </div>
 <?php
     }
+
+    function HeadMod() {
+?>
+    <div class="container-fluid">
+        <img src="../resources/images/logo.png" class="navbar-brand" alt="">
+        <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+        </form>
+        <button class="Btn">
+            <a href="">Notificaciones</a>
+        </button>
+    </div>
+<?php
+    }
 ?>
