@@ -4,16 +4,16 @@
     ?>
     <div class="sidebar">
             <div class="home">
-                <a href="panel.php"><i class="bi bi-house"></i>Home</a>
+                <a href="../panel.php"><i class="bi bi-house"></i>Home</a>
             </div>
             <hr>
             <div id="theme">
                 <i class="bi bi-tree-fill icon"></i>
-                <div><a href="#">Administrar publicaciones</a></div>
+                <div><a href="dashboard.php">Administrar publicaciones</a></div>
             </div>
             <div id="theme">
                 <i class="bi bi-water icon"></i>
-                <div><a href="#">Administrar Usuarios</a></div>
+                <div><a href="admin_users.php">Administrar Usuarios</a></div>
             </div> 
             <div id="theme">
                 <i class="bi bi-globe-americas icon"></i>
