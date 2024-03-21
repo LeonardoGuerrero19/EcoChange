@@ -108,10 +108,10 @@
             </div>
             <hr>
             <div id="theme">
-                <div><a href="#">Administrar publicaciones</a></div>
+                <div><a href="dashboard.php">Administrar publicaciones</a></div>
             </div>
             <div id="theme">
-                <div><a href="#">Administrar Usuarios</a></div>
+                <div><a href="admin_users.php">Administrar Usuarios</a></div>
             </div> 
             <div id="theme">
                 <div><a href="#">Administrar temas disponibles</a></div>
