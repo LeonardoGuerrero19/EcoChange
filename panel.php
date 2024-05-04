@@ -67,6 +67,13 @@
                             <div class="image-pub">
                                 <img src="data:image/jpg/png/jpeg;base64,<?php echo base64_encode($row['post_image']); ?>"/>
                             </div>
+                            <button class="like-button" data-postid="<?php echo $row['post_id']; ?>">Me gusta</button>
+<span id="like-count-<?php echo $row['post_id']; ?>" class="like-count"><?php echo $row['likes_count']; ?></span>
+
+<button class="dislike-button" data-postid="<?php echo $row['post_id']; ?>">No me gusta</button>
+<span id="dislike-count-<?php echo $row['post_id']; ?>" class="dislike-count"><?php echo $row['dislikes_count']; ?></span>
+
+
                         </div>
                         <hr id="hr-pubs">
                         <?php
@@ -84,6 +91,48 @@
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.body.addEventListener('click', function(event) {
+        if (event.target.matches('.like-button') || event.target.matches('.dislike-button')) {
+            const post_id = event.target.dataset.postid;
+            const action = event.target.matches('.like-button') ? 'like' : (event.target.matches('.dislike-button') ? 'dislike' : 'unvote');
+
+            fetch('vote.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'post_id=' + post_id + '&action=' + action
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    const likeCountElement = document.getElementById(`like-count-${post_id}`);
+                    const dislikeCountElement = document.getElementById(`dislike-count-${post_id}`);
+                    
+                    if (likeCountElement && dislikeCountElement) {
+                        likeCountElement.textContent = data.likes;
+                        dislikeCountElement.textContent = data.dislikes;
+                    }
+                    
+                    alert(data.message); // Mensaje de éxito con el nuevo estado del voto
+                } else {
+                    alert(data.message); // Mostrar mensaje de error o de ya votado
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error al procesar el voto. Por favor, inténtelo de nuevo.');
+            });
+        }
+    });
+});
+
+</script>
+
+
 <script src="resources/js/script.js"></script>  
 </body>
 </html>
