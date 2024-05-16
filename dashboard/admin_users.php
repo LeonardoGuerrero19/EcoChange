@@ -34,7 +34,8 @@
         <div class="main-content">
             <h1>Administrar Usuarios</h1>
             <div class="rol">
-                <button id="showInactiveUser" onclick="loadUsers('inactive')">Cuentas Inactivas</button>
+                <button id="showInactiveUsers" onclick="loadUsers('inactive')">Cuentas Inactivas</button>
+                <button id="showActiveUsers" onclick="loadUsers('usuario_registrado')">Cuentas activas</button>
             </div>
             
             <div class="users-container">
@@ -47,6 +48,8 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="../resources/js/estados_users.js"></script>
+    <script src="../resources/js/script.js"></script>
     <!-- Otros scripts aquí si los necesitas -->
 </body>
 </html>

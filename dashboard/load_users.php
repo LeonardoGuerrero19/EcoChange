@@ -1,30 +1,82 @@
 <?php
-// Incluir el archivo de conexión a la base de datos
 require "../conection.php";
 
-// Consulta SQL para seleccionar todos los usuarios activos
-$sql = "SELECT user_name, user_id, user_email, user_rol FROM user WHERE user_rol = 'usuario_registrado'";
-$result = mysqli_query($con, $sql);
+// Verificar si se ha enviado un estado a través de la solicitud POST
+if (isset($_POST['status'])) {
+    $status = $_POST['status'];
 
-// Verificar si se encontraron resultados
-if (mysqli_num_rows($result) > 0) {
-    // Mostrar los usuarios
-    while ($row = mysqli_fetch_assoc($result)) {
-        // Agregar la información que deseas mostrar
-        echo "<div class='user'>";
-        echo "<p>Nombre: " . $row["user_name"] . "</p>";
-        echo "<p>Correo: " . $row["user_email"] . "</p>";
-        //echo "<img src='" . $row["user_profile_picture"] . "' alt='Foto de perfil'>"; // Mostrar foto de perfil
-        if($row["user_rol"] === "usuario_registrado"){
+    // Consulta SQL para seleccionar los usuarios según el estado especificado
+    $sql = "SELECT user_name, user_id, user_email, user_rol
+            FROM user
+            WHERE user_rol = '$status'";
+    $result = mysqli_query($con, $sql);
+
+    // Verificar si se encontraron resultados
+    if (mysqli_num_rows($result) > 0) {
+        // Mostrar los usuarios
+        while ($row = mysqli_fetch_assoc($result)) {
+            // Agregar la información que deseas mostrar
+            echo "<div class='user'>";
+            echo "<div class='header-text'>";
+            echo $row["user_name"];
+            echo "<div id='button-theme'>" . $row["user_rol"] . "</div>";
+            echo "</div>";
+            echo "<p class='text'>" . $row["user_email"] . "</p>";
+
+            // Mostrar botón para activar o inactivar según el estado
+            if ($row["user_rol"] === "inactivo") {
+                echo "<div class='botones'>";
+                echo "<form action='user_active.php' method='post'>";
+                echo "<input type='hidden' name='user_id' value='" . $row["user_id"] . "'>";
+                echo "<button type='submit'>Activar usuario</button>";
+                echo "</form>";
+                echo "</div>";
+            } else {
+                echo "<div class='botones'>";
+                echo "<form action='user_inactive.php' method='post'>";
+                echo "<input type='hidden' name='user_id' value='" . $row["user_id"] . "'>";
+                echo "<button type='submit'>Inactivar usuario</button>";
+                echo "</form>";
+                echo "</div>";
+            }
+
+            echo "</div>";
+        }
+    } else {
+        echo "<div class='no_usuarios'>No se han encontrado usuarios para mostrar con el estado '$status'.</div>";
+    }
+} else {
+    // Cargar usuarios registrados por defecto
+    $status = 'usuario_registrado';
+    $sql = "SELECT user_name, user_id, user_email, user_rol
+            FROM user
+            WHERE user_rol = '$status'";
+    $result = mysqli_query($con, $sql);
+
+    // Verificar si se encontraron resultados
+    if (mysqli_num_rows($result) > 0) {
+        // Mostrar los usuarios registrados
+        while ($row = mysqli_fetch_assoc($result)) {
+            // Agregar la información que deseas mostrar
+            echo "<div class='user'>";
+            echo "<div class='header-text'>";
+            echo $row["user_name"];
+            echo "<div id='button-theme'>" . $row["user_rol"] . "</div>";
+            echo "</div>";
+            echo "<p class='text'>" . $row["user_email"] . "</p>";
+
+            echo "<div class='botones'>";
             echo "<form action='user_inactive.php' method='post'>";
             echo "<input type='hidden' name='user_id' value='" . $row["user_id"] . "'>";
             echo "<button type='submit'>Inactivar usuario</button>";
             echo "</form>";
+            echo "</div>";
+
+            echo "</div>";
         }
-        echo "</div>";
+    } else {
+        echo "<div class='no_usuarios'>No se han encontrado usuarios registrados para mostrar.</div>";
     }
-} else {
-    echo "<div class='no_usuarios'> No se han encontrado usuarios activos para mostrar.</div>";
 }
 
 // Cerrar la conexión
