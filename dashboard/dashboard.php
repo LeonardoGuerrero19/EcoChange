@@ -33,10 +33,10 @@
         <!-- Mostrar publicaciones -->
         <div class="main-content">
             <div class="estado">
-                <p>filtrar por: </p>
-                <button id="showReviewed" onclick="loadPosts('revisado')"><b>Revisadas</b></button>
-                <button id="showPending" onclick="loadPosts('pendiente')"><b>Pendientes</b></button>
-                <button id="showInactive" onclick="loadPosts('inactivo')"><b>Inactivas</b></button>
+            <button id="showReviewed">Revisadas</button> 
+            <button id="showPending">Pendientes</button>
+            <button id="showInactive">Inactivas</button>
+
             </div>
 
             <div class="post-container">

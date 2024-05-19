@@ -9,14 +9,14 @@ $(document).ready(function() {
         loadPosts('revisado');
     });
 
-    function loadPendingPosts(){
-        loadPosts('pendiente');
-    }
+    // Maneja el clic en el botón para mostrar publicaciones inactivas
+    $('#showInactive').click(function() {
+        loadPosts('inactivo');
+    });
 
-    loadPendingPosts();
-
+    // Cargar publicaciones pendientes al inicio
+    loadPosts('pendiente');
 });
-
 
 function loadPosts(status) {
     // Realiza una solicitud AJAX al servidor para obtener las publicaciones según el estado
@@ -26,34 +26,43 @@ function loadPosts(status) {
         data: { status: status },
         success: function(response) {
             // Actualiza el contenedor de publicaciones con el contenido devuelto por el servidor
-            $('.post-container').html(response); // Cambiado '#postContainer' a '.post-container'
+            $('.post-container').html(response);
+            
+            // Asigna manejadores de eventos a los formularios dentro de las publicaciones cargadas
+            assignFormHandlers(status);
         },
         error: function(xhr, status, error) {
             console.error(error);
         }
     });
 }
-// Función para revertir el estado de una publicación a pendiente
-function revertToPending(postId) {
-    $.ajax({
-        url: 'revertir_pendiente.php',
-        method: 'POST',
-        data: { post_id: postId },
-        success: function(response) {
-            if (response.success) {
-                //Obtener el estado actual de los posts para cargarlos correctamente.
-                var activeButton =$('.active-button').attr('id');
-                var status =activeButton === 'showPending' ? 'pendiente' : 'revisado';
 
-                //Funcion para cargar los pots según el estado del boton activo.
-                loadPosts(status); // Aquí asumimos que quieres cargar los posts revisados nuevamente
-            } else {
-                // Si hubo un error, mostrar un mensaje de error
-                alert(response.message);
+function assignFormHandlers(status) {
+    // Asigna manejadores de eventos a los formularios dentro de las publicaciones cargadas
+    $('.post-container form').off('submit').on('submit', function(event) {
+        event.preventDefault(); // Evitar el envío del formulario de la manera tradicional
+
+        var form = $(this);
+        var actionUrl = form.attr('action');
+        var formData = form.serialize();
+
+        // Agrega el estado de la publicación al formulario
+        formData += '&status=' + status;
+
+        $.ajax({
+            url: actionUrl,
+            method: 'POST',
+            data: formData,
+            success: function(response) {
+                // Mostrar mensaje de éxito o manejar la respuesta
+                console.log(response);
+
+                // Volver a cargar las publicaciones según el estado actual
+                loadPosts(status);
+            },
+            error: function(xhr, status, error) {
+                console.error(error);
             }
-        },
-        error: function(xhr, status, error) {
-            console.error(error);
-        }
+        });
     });
 }
