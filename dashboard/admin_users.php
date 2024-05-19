@@ -30,25 +30,21 @@
         <!-- Barra lateral -->
         <?php echo SidebarMod(); ?>
         
-        <!-- Mostrar publicaciones -->
+        <!-- Mostrar usuarios -->
         <div class="main-content">
             <div class="estado">
-            <button id="showRegistered">Usuarios Registrados</button>
-            <button id="showInactive">Usuarios Inactivos</button>
+                <button id="showRegistered">Usuarios Registrados</button>
+                <button id="showInactive">Usuarios Inactivos</button>
             </div>
 
             <div class="user-container">
-            
+                <!-- Aquí se cargarán los usuarios -->
             </div>
         </div>
-
-        
     </div>
 
-    
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="../resources/js/cargar_users.js"></script>
     <script src="../resources/js/script.js"></script>
-    
 </body>
 </html>

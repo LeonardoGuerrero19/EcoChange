@@ -6,8 +6,10 @@ require "../conection.php";
 if(isset($_POST['rol'])) {
     $rol = $_POST['rol'];
 
-    // Consulta SQL para seleccionar los usuarios según el rol especificado
-    $sql = "SELECT * FROM user WHERE user_rol = '$rol'";
+    // Consulta SQL para seleccionar los usuarios según el rol especificado y formatear la fecha de registro
+    $sql = "SELECT user_id, user_name, user_email, user_rol, DATE_FORMAT(user_registration, '%Y-%m-%d %H:%i:%s') as user_registration 
+            FROM user 
+            WHERE user_rol = '$rol'";
     $result = mysqli_query($con, $sql);
 
     // Verificar si se encontraron resultados
@@ -22,23 +24,22 @@ if(isset($_POST['rol'])) {
             echo "<p class='text'>Correo Electrónico: " . $row["user_email"] . "</p>";
             echo "<p class='text'>Rol de Usuario: " . $row["user_rol"] . "</p>";
             echo "<p class='text'>Fecha de Registro: " . $row["user_registration"] . "</p>";
-            
-            // Botón para cambiar el rol de usuario
+
+            // Botón para cambiar el estado del usuario
             echo "<div class='botones'>";
-            echo "<form action='cambiar_rol.php' method='post'>";
-            echo "<input type='hidden' name='user_id' value='" . $row["user_id"] . "'>";
-            echo "<label for='nuevo_rol'>Nuevo Rol:</label>";
-            echo "<select name='nuevo_rol'>";
-            echo "<option value='visitante'>Visitante</option>";
-            echo "<option value='usuario_registrado'>Usuario Registrado</option>";
-            echo "<option value='moderador'>Moderador</option>";
-            echo "<option value='administrador'>Administrador</option>";
-            echo "<option value='inactivo'>Inactivo</option>";
-            echo "</select>";
-            echo "<button type='submit'>Cambiar Rol</button>";
-            echo "</form>";
+            if ($row["user_rol"] === "usuario_registrado") {
+                echo "<form action='user_inactive.php' method='post'>";
+                echo "<input type='hidden' name='user_id' value='" . $row["user_id"] . "'>";
+                echo "<button type='submit'>Inactivar Usuario</button>";
+                echo "</form>";
+            } else {
+                echo "<form action='user_reactive.php' method='post'>";
+                echo "<input type='hidden' name='user_id' value='" . $row["user_id"] . "'>";
+                echo "<button type='submit'>Reactivar Usuario</button>";
+                echo "</form>";
+            }
             echo "</div>";
-            
+
             echo "</div>";
         }
     } else {
