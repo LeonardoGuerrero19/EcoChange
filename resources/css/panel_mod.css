@@ -161,8 +161,11 @@ img {
 
 .main-content {
     padding-top: 10px;
+}
+.main-content .content-header {
     text-align: center;
 }
+
 .estado {
     margin: 0 15px;
     display: flex; /* Convertir el contenedor en un contenedor flexbox */
@@ -323,6 +326,12 @@ img {
     background-color: #e0e0e0; /* Cambiar el color de fondo al pasar el cursor */
 }
 
+/* publicaciones */
+.user-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .user {
     flex: 0 0 calc(50% - 20px); /* Dos cajas por fila, con un espacio de 20px entre ellas */
     margin: 10px; /* Espacio entre las cajas */
@@ -394,6 +403,7 @@ img {
 .optsPubs i {
     margin-right: 5px;
 }
+
 
 /* ----------INICIO DE ESTILO PARA LA CARGA DE LOS TEMAS.----------------------------
 /* Estilo del contenedor principal de temas */
@@ -478,6 +488,7 @@ img {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
+    text-align: center;
 }
 
 /*----------------------FIN DEL ESTILO PARA LA CARGA DE LOS TEMAS-----------------
@@ -498,6 +509,7 @@ img {
     max-width: 50%; /* Ancho máximo de la ventana modal */
     max-height: 70%; /* Altura máxima de la ventana modal */
     overflow-y: auto; /* Permitir desplazamiento vertical si es necesario */
+    
 }
 
 /* Estilos para el fondo gris oscurecido */

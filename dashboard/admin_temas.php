@@ -36,8 +36,10 @@
         <!-- Contenido principal -->
         <div class="main-content">
             <!-- Botón para mostrar el formulario de manera flotante -->
-            <h1> Administrador de los temas</h1>
-            <button id="show-form-btn" class="agregar-tema-btn">Agregar Nuevo Tema</button>
+            <div class="content-header">
+                <h1>Administrador de los temas</h1>
+                <button id="show-form-btn" class="agregar-tema-btn">Agregar Nuevo Tema</button>
+            </div>
 
 
             <!-- Ventana modal -->
