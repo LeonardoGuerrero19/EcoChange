@@ -114,7 +114,7 @@
                 <div><a href="admin_users.php">Administrar Usuarios</a></div>
             </div> 
             <div id="theme">
-                <div><a href="#">Administrar temas disponibles</a></div>
+                <div><a href="admin_temas.php">Administrar temas disponibles</a></div>
             </div>
             <?php
             if(isset($_SESSION['user_name'])) {
