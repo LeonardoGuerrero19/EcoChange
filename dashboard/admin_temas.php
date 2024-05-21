@@ -16,10 +16,9 @@
     <!-- CSS personalizado -->
     <link rel="stylesheet" href="../resources/css/panel_mod.css">
     <link rel="stylesheet" href="../resources/css/all.css">
-    <!-- Tu CSS -->
-    <link rel="stylesheet" href="../resources/css/tu_estilo.css">
     <!-- JavaScript -->
     <script src="../resources/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <title>Dashboard temas</title>
 </head>
 <body>
@@ -69,6 +68,7 @@
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="../resources/js/admin_temas.js"></script>
+    <script src="../resources/js/eliminar_tema.js"></script>
     <script src="../resources/js/script.js"></script>
 </body>
 </html>
