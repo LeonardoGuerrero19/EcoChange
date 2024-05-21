@@ -99,12 +99,11 @@
     <?php
     }
 
-    function SidebarMod()
-    {
+    function SidebarMod() {
     ?>
-    <div class="sidebar">
+        <div class="sidebar">
             <div class="home">
-                <a href="../panel.php"><i class="bi bi-house"></i>Home</a>
+                <a href="../panel.php"><i class="bi bi-house"></i> Home</a>
             </div>
             <hr>
             <div id="theme">
@@ -117,10 +116,10 @@
                 <div><a href="admin_temas.php">Administrar temas disponibles</a></div>
             </div>
             <?php
-            if(isset($_SESSION['user_name'])) {
+            if (isset($_SESSION['user_name'])) {
                 echo '
                 <div id="Options" class="options">
-                <button class="userBtn" onclick="OptionsActive()">' . $_SESSION["user_name"] . '</button>
+                <button class="userBtn" onclick="OptionsActive()">' . htmlspecialchars($_SESSION["user_name"]) . '</button>
                 <div class="options-content">
                     <button class="opt">
                         <i class="bi bi-person-fill"></i>
@@ -132,6 +131,13 @@
                     </button>
                 </div>
             </div>';
+            }
+            if (isset($_SESSION['user_rol']) && $_SESSION['user_rol'] === 'administrador') {
+                echo '
+                <div id="theme">
+                    <i class="bi bi-shield-lock icon"></i>
+                    <div><a href="admin_mods.php">Administrar Moderadores</a></div>
+                </div>';
             }
             ?>
         </div>
