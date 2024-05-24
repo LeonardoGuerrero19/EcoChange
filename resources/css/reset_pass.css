@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+* {
+    box-sizing: border-box;
+    /* font-family: 'Montserrat', sans-serif; */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #eaf3ec;
+
+}
+
+
+h1 {
+    color: #38874b;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+
+.container {
+    max-width: 500px;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.pass-icon{
+    width: 150px;
+}
+.pass-image{
+    width: 350px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+input[type="password"],
+input[type="hidden"] {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin-bottom: 1rem;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    background-color: #708a68;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    align-self: center;
+}
+
+button:hover {
+    background-color: #145523;
+}
+.container-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1000px; /* Ajusta el ancho máximo según tus necesidades */
+    margin: 0 auto;
+    }
+    
+    .image-container {
+    flex: 1;
+    max-width: 500px; /* Ajusta el ancho máximo de la imagen según tus necesidades */
+    text-align: center;
+    margin-left: 30px; 
+    
+    }
+    
+    .image-container img {
+    max-width: 100%;
+    height: auto;
+    }
+      

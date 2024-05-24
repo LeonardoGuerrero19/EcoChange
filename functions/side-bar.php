@@ -17,15 +17,15 @@
                 <div class="dropdown-content">
                     <div id="theme">
                         <i class="bi bi-tree-fill icon"></i>
-                        <div><a href="#">Vida de ecosistemas</a></div>
+                        <div><a href="?theme=Vida de ecosistemas">Vida de ecosistemas</a></div>
                     </div>
                     <div id="theme">
                         <i class="bi bi-water icon"></i>
-                        <div><a href="#">Vida submarina</a></div>
+                        <div><a href="?theme=Vida submarina">Vida submarina</a></div>
                     </div> 
                     <div id="theme">
                         <i class="bi bi-globe-americas icon"></i>
-                        <div><a href="#">Acción por el clima</a></div>
+                        <div><a href="?theme=Acción por el clima">Acción por el clima</a></div>
                     </div> 
                 </div>
             </div>
@@ -69,15 +69,15 @@
                 <div class="dropdown-content">
                     <div id="theme">
                         <i class="bi bi-tree-fill icon"></i>
-                        <div><a href="#">Vida de ecosistemas</a></div>
+                        <div><a href="panel.php?theme=Vida de ecosistemas">Vida de ecosistemas</a></div>
                     </div>
                     <div id="theme">
                         <i class="bi bi-water icon"></i>
-                        <div><a href="#">Vida submarina</a></div>
+                        <div><a href="panel.php?theme=Vida Submarina">Vida submarina</a></div>
                     </div> 
                     <div id="theme">
                         <i class="bi bi-globe-americas icon"></i>
-                        <div><a href="#">Acción por el clima</a></div>
+                        <div><a href="panel.php?theme=Acción por el clima">Acción por el clima</a></div>
                     </div> 
                 </div>
             </div>
