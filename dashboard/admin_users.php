@@ -15,20 +15,26 @@
     <!-- icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- css -->
-    <link rel="stylesheet" href="../resources/css/panel_mod.css">
+    <link rel="stylesheet" href="../resources/css/style.css">
     <link rel="stylesheet" href="../resources/css/all.css">
     <!-- js -->
     <script src="../resources/js/bootstrap.bundle.min.js"></script>
     <title>Dashboard</title>
 </head>
 <body>
-    <nav class="navbar bg-body-tertiary">
-        <?php echo HeadMod(); ?>
-    </nav>
+    <header class="header">
+        <section class="flex">
+            <?php echo HeadMod(); ?>
+        </section>
+    </header>
 
-    <div class="wrapper">
+    <div class="nav" id="navbar">
         <!-- Barra lateral -->
         <?php echo SidebarMod(); ?>
+    </div>
+
+    <div class="">
+        <!-- Barra lateral -->
         
         <!-- Mostrar usuarios -->
         <div class="main-content">

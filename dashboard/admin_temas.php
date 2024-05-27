@@ -14,7 +14,7 @@
     <!-- Iconos -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- CSS personalizado -->
-    <link rel="stylesheet" href="../resources/css/panel_mod.css">
+    <link rel="stylesheet" href="../resources/css/style.css">
     <link rel="stylesheet" href="../resources/css/all.css">
     <!-- JavaScript -->
     <script src="../resources/js/bootstrap.bundle.min.js"></script>
@@ -23,14 +23,20 @@
 </head>
 <body>
     <!-- Barra de navegación -->
-    <nav class="navbar bg-body-tertiary">
-        <?php echo HeadMod(); ?>
-    </nav>
+    <header class="header">
+        <section class="flex">
+            <?php echo HeadMod(); ?>
+        </section>
+    </header>
 
-    <!-- Wrapper -->
-    <div class="wrapper">
+    <div class="nav" id="navbar">
         <!-- Barra lateral -->
         <?php echo SidebarMod(); ?>
+    </div>
+
+    <!-- Wrapper -->
+    <div class="">
+        <!-- Barra lateral -->
         
         <!-- Contenido principal -->
         <div class="main-content">
