@@ -19,11 +19,11 @@
     <link rel="stylesheet" href="../resources/css/all.css">
     <!-- js -->
     <script src="../resources/js/bootstrap.bundle.min.js"></script>
-    <title>Administrar Usuarios</title>
+    <title>Dashboard</title>
 </head>
 <body>
     <nav class="navbar bg-body-tertiary">
-        <?php echo Head(); ?>
+        <?php echo HeadMod(); ?>
     </nav>
 
     <div class="wrapper">
@@ -32,21 +32,19 @@
         
         <!-- Mostrar usuarios -->
         <div class="main-content">
-            <h1>Administrar Usuarios</h1>
-            <div class="rol">
-                <button id="showInactiveUser" onclick="loadUsers('inactive')">Cuentas Inactivas</button>
+            <div class="estado">
+                <button id="showRegistered">Usuarios Registrados</button>
+                <button id="showInactive">Usuarios Inactivos</button>
             </div>
-            
-            <div class="users-container">
-                <?php
-                    // Incluir el archivo para cargar usuarios
-                    require "load_users.php";
-                ?>
+
+            <div class="user-container">
+                <!-- Aquí se cargarán los usuarios -->
             </div>
         </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <!-- Otros scripts aquí si los necesitas -->
+    <script src="../resources/js/cargar_users.js"></script>
+    <script src="../resources/js/script.js"></script>
 </body>
 </html>
