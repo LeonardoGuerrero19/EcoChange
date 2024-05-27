@@ -137,46 +137,55 @@
 
     function SidebarMod() {
     ?>
-        <div class="sidebar">
-            <div class="home">
-                <a href="../panel.php"><i class="bi bi-house"></i> Home</a>
-            </div>
-            <hr>
-            <div id="theme">
-                <div><a href="dashboard.php">Administrar publicaciones</a></div>
-            </div>
-            <div id="theme">
-                <div><a href="admin_users.php">Administrar Usuarios</a></div>
-            </div> 
-            <div id="theme">
-                <div><a href="admin_temas.php">Administrar temas disponibles</a></div>
-            </div>
-            <?php
-            if (isset($_SESSION['user_name'])) {
-                echo '
-                <div id="Options" class="options">
-                <button class="userBtn" onclick="OptionsActive()">' . htmlspecialchars($_SESSION["user_name"]) . '</button>
-                <div class="options-content">
-                    <button class="opt">
-                        <i class="bi bi-person-fill"></i>
-                        <div><a href="profile-user.php">Ir a mi perfil</a></div>
-                    </button>
-                    <button class="opt">
-                        <i class="bi bi-box-arrow-left"></i>
-                        <div><a href="../logout.php">Cerrar Sesión</a></div>
-                    </button>
+        <nav class="nav__container">
+            <div>
+                <div class="nav__list">
+                    <div class="nav__items">
+                        <a href="panel.php" class="nav__link home">
+                            <i class="bi bi-house-fill nav__icon"></i>
+                            <span>Inicio</span>
+                        </a>
+                        <hr>
+                        <div class="nav__themes">
+                            <div class="nav__dropdown-content">
+                                <div id="theme" class="nav__dropdown-item">
+                                    <a href="dashboard.php">Administrar publicaciones</a>
+                                </div>
+                                <div id="theme" class="nav__dropdown-item">
+                                    <a href="admin_users.php">Administrar Usuarios</a>
+                                </div> 
+                                <div id="theme" class="nav__dropdown-item">
+                                    <a href="admin_temas.php">Administrar temas disponibles</a>
+                                </div>
+                            <?php
+                            if (isset($_SESSION['user_rol']) && $_SESSION['user_rol'] === 'administrador') {
+                                echo '
+                                <div id="theme" class="nav__dropdown-item">
+                                    <a href="admin_mods.php">Administrar Moderadores</a>
+                                </div>';
+                            }
+                            ?>
+                            </div>
+                        </div>
+                        <hr>
+                        <a href="logout.php" class="nav__link home">
+                            <i class="bi bi-box-arrow-left nav__icon"></i>
+                            <span>Cerrar Sesión</span>
+                        </a>
+                    </div>
                 </div>
-            </div>';
-            }
-            if (isset($_SESSION['user_rol']) && $_SESSION['user_rol'] === 'administrador') {
-                echo '
-                <div id="theme">
-                    <i class="bi bi-shield-lock icon"></i>
-                    <div><a href="admin_mods.php">Administrar Moderadores</a></div>
-                </div>';
-            }
-            ?>
-        </div>
+            </div>
+
+        <?php
+        if(isset($_SESSION['user_name'])) {
+            echo '
+            <a href="profile-user.php" class="nav__user">
+                <span>' . $_SESSION["user_name"] . '</span>
+            </a>';
+        }
+        ?>
+        </nav>
+        
     <?php
     }
     ?>

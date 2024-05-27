@@ -161,7 +161,7 @@ a.home {
     padding: 0.75rem 2.5rem 0.75rem 1.8rem;
 }
 
-.nav__dropdown-item {
+.nav__dropdown-item, .nav__dropdown-item a{
     color: var(--dark-green);
     text-decoration: none;
     border-radius: 30px;
@@ -176,6 +176,10 @@ a.home {
 
 .nav__dropdown-icon {
     margin-left: 85px;
+}
+
+#theme:hover a{
+    color: #fff;
 }
 
 /* show collapse */
