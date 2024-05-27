@@ -103,7 +103,7 @@ if (isset($_POST['log-in'])) {
 
             switch ($user_rol) {
                 case 'administrador':
-                    header("Location: view_adm.php");
+                    header("Location: dashboard/dashboard.php");
                     exit();
                     break;
                 case 'moderador':
