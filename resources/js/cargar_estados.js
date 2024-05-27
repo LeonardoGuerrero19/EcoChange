@@ -54,14 +54,8 @@ function assignFormHandlers(status) {
             method: 'POST',
             data: formData,
             success: function(response) {
-                // Mostrar mensaje de éxito o manejar la respuesta
-                console.log(response);
-
                 // Volver a cargar las publicaciones según el estado actual
                 loadPosts(status);
-            },
-            error: function(xhr, status, error) {
-                console.error(error);
             }
         });
     });

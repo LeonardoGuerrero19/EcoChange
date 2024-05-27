@@ -41,15 +41,10 @@ $(document).ready(function() {
                 method: 'POST',
                 data: formData,
                 success: function(response) {
-                    // Mostrar mensaje de éxito o manejar la respuesta
-                    console.log(response);
-
                     // Volver a cargar los usuarios según el rol actual
                     loadUsers(role);
                 },
-                error: function(xhr, status, error) {
-                    console.error(error);
-                }
+
             });
         });
     }
