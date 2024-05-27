@@ -3,7 +3,6 @@
     require "conection.php";
     require "functions/side-bar.php";
     require "functions/header.php";
-
 ?>
 
 <!DOCTYPE html>
@@ -16,23 +15,27 @@
     <!-- icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- css -->
-    <link rel="stylesheet" href="resources/css/panel.css">
+    <link rel="stylesheet" href="resources/css/style.css">
     <link rel="stylesheet" href="resources/css/all.css">
-    <link rel="stylesheet" href="resources/css/forms.css">
     <!-- js -->
     <script src="resources/js/bootstrap.bundle.min.js"></script>
     <title>Panel General</title>
 </head>
 <body>
-    <nav class="navbar bg-body-tertiary">
-        <?php echo Head(); ?>
-    </nav>
+    <header class="header">
+        <section class="flex">
+            <?php echo Head(); ?>
+        </section>
+    </header>
 
-    <div class="wrapper">
+    <div class="nav" id="navbar">
+        <?php
+            echo Sidebar();
+        ?>
+    </div>
 
-        <?php echo Sidebar(); ?>
-
-        <div class="main-content">
+    <div class="content">
+        <div class="pubs__container">
             <?php 
                 $sql = "SELECT *, user.user_name AS user_name FROM post
                 INNER JOIN user ON post.user_id = user.user_id";
@@ -44,22 +47,32 @@
                     while ($row = mysqli_fetch_assoc($res)) {
                         if($row["estado"] === "revisado"){
                             ?>
-                            <div class="main-pubs">
-                                <div class="headForm">
+                            <div class="pubs__row">
+                                <div class="pubs__header">
                                     <?php echo $row["user_name"]; ?>
                                     <div id="theme-section"> <?php echo $row["post_tema"]; ?></div>
                                 </div>
-                                <div class="text-pub">
+                                <div class="pubs__title">
                                     <b><?php echo $row["post_titulo"]; ?></b>
                                 </div>
-                                <div class="text-pub">
+                                <div class="pubs__text">
                                     <?php echo $row["post_contenido"]; ?>
                                 </div>
-                                <div class="image-pub">
-                                <img src="data:image/jpg/png/jpeg;base64,<?php echo base64_encode($row['post_image']);?>"/>
+                                <div class="pubs__image">
+                                    <?php if (!empty($row["post_image"])): ?>
+                                        <img src="data:image/jpg/png/jpeg;base64,<?php echo base64_encode($row['post_image']);?>"/>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="pubs__options">
+                                    <div class="pubs__likes">
+                                        hola
+                                    </div>
+                                    <div class="pubs__comments">
+                                        hola2
+                                    </div>
                                 </div>
                             </div>
-                            <hr id="hr-pubs">
+                            <hr>
                             <?php
                         }
                     }
@@ -67,13 +80,12 @@
                     echo "No hay publicaciones.";
                 }
             ?>
-                </div>
-                
-            </div>
+        </div>
+        <div class="other-section">
+            hola2
         </div>
     </div>
 
     <script src="resources/js/script.js"></script>
-    
 </body>
 </html>

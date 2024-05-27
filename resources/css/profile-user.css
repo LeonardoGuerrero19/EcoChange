@@ -1,0 +1,116 @@
+/* profile user section */
+.form__create {
+    border: 1px solid var(--dark-green);
+    border-radius: 30px;
+    padding: 10px 15px;
+    font-size: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.form__insertText {
+    width: 100%;
+    background-color: var(--gray);
+    border-radius: 30px;
+    padding: 8px;
+}
+
+.form__options {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.form__opt {
+    background-color: var(--dark-green);
+    border-radius: 30px;
+    color: #fff;
+    padding: 5px 10px;
+    margin: 0 10px;
+}
+
+.form__opt i {
+    margin-right: 10px;
+}
+
+#form__line {
+    margin-top: 20px;
+}
+
+.nav__profile {
+    margin-bottom: 25px;
+    text-align: center;
+    width: 100%;
+}
+
+#circle {
+    margin: auto;
+    margin-bottom: 3px;
+    padding: 5px;
+    background-color: var(--dark-green);
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#circle2 {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#circle2 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nav__profile span {
+    font-size: 1.8rem;
+}
+
+.pubs__edit .pubs__editBtn {
+    color: var(--dark-green);
+    font-size: 2.2rem;
+    align-items: center;
+    cursor: pointer;
+    margin-left: 180px;
+}
+
+.pubs__edit .options__edit{
+    right: 510px;
+    position: absolute;
+    padding: 10px 20px;
+    margin-top: 5px;
+    border-radius: 30px;
+    background: #fff;
+    box-shadow: var(--shadow);
+    display: none;
+}
+
+.pubs__edit.active .options__edit{
+    display: block;
+}
+
+.options__edit .option__edit{
+    color: var(--dark-green);
+    display: flex;
+    cursor: pointer;
+    border-radius: 30px;
+    padding: 5px 10px;
+    font-weight: 600;
+}
+
+.options__edit .option__edit:hover{
+    background: var(--gray);
+}
+
+.option__edit i {
+    margin-right: 10px;
+}

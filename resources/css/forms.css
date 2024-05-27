@@ -1,191 +1,132 @@
-
-/* create pub */
-#BckgForm {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 999;
+/* form create post */
+#modal::backdrop, .modal{
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
-#FormCreate {
+dialog, .modal-content {
+    width: 550px;
     background-color: #fff;
+    border-radius: 30px;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 45%; height: 80%;
-    padding: 25px;
-    border-radius: 30px;
+    box-shadow: var(--shadow);
 }
 
-#contentForm {
-    height: 100%;
+.form__container {
+    margin: 20px 15px;
+}
+
+.form__label {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form__label b {
+    text-align: center;
+    margin: auto;
+    color: var(--dark-green);
+    font-size: 3rem;
+}
+
+.form__label button {
+    background-color: transparent;
+    color: var(--dark-green);
+    font-size: 3.5rem;
+}
+
+.form__user {
+    display: flex;
+}
+
+.form__menu {
+    position: absolute;
+    right: 15px;
+}
+
+.form__menu select{
+    background-color: var(--dark-green);
+    border-radius: 30px;
+    color: #fff;
+    text-align: center;
+    padding: 4px;   
+}
+
+.form__menu option {
+    background-color: var(--green);
+    color: var(--dark-green);
+}
+
+.form__title input{
+    width: 100%;
+    margin: 15px 0;
+    border: 1px solid var(--dark-green);
+    border-radius: 30px;
+    color: var(--dark-green);
+    padding-left: 15px;
+}
+
+.form__text textarea{
+    width: 100%;
+    height: 100px;
+    resize: none;
+    color: var(--dark-green);
+}
+
+.form__add {
+    background-color: var(--green);
+    border-radius: 30px;
+    padding-top: 5px;
+    align-items: center;    
+    display: flex;
+    justify-content: space-around;
+}
+
+/*input[type="file"] {
+    display: none;
+}*/
+
+.custom-file-upload {
+    cursor: pointer;
+    font-size: 2.2rem;
+    margin: 0 20px;
+    padding-bottom: 5px;
+}
+
+.form__input {
+    width: 100%;
+    margin-top: 15px;
+    background-color: var(--dark-green);
+    border-radius: 30px;
+    color: #fff;
+    font-weight: 600;
+    padding: 5px;
+}
+
+.form__image{
+    width: 100%;
+    margin: 0 auto 15 auto;
+}
+
+.form__image img, .form__image video{
+    display: block;
+    position: relative;
+    max-width: 100%;
+    border-radius: 30px;
+    max-height: 400px;
     margin: auto;
 }
 
-h1 {
-    font-size: 25px;
-    font-weight: 700;
-    text-align: center;
-}
-
-.pForm {
-    margin: 10px 0;
-}
-
-.headForm {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.userForm {
-    font-size: 20px;
-}
-
-.topicsForm {
-    background-color: var(--dark-green);
-    border: none;
-    color: #fff;
-    text-align: center;
-    letter-spacing: 0.3cap;
-    border-radius: 50px;
-    padding: 0 25px;
-}
-
-#topics {
+#remove-media {
+    background-color: transparent;
     display: none;
-    margin: 0 12px;
-    background-color: var(--green);
     position: absolute;
-    top: 115px; right: -20px;
-    border-radius: 30px;
-    padding: 5px 15px;
-    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
-    z-index: 999;
+    right: 0;
+    z-index: 100;
 }
 
-#topics::before {
-    content: "";
-    position: absolute;
-    top: -25px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border: 15px solid transparent;
-    border-bottom-color: var(--green);
-}
-
-#topic-options {
-    margin: 10px 0;
-}
-
-input.btn-options {
-    width: 100%; height: 20%;
-    position: absolute;
-    cursor: pointer;
-    opacity: 0;
-}
-
-label.btn-text {
-    padding: 0;
-    background-color: var(--green);
-    border: none;
-    color: var(--dark-green);
-}
-
-.btn-options:checked + .btn-text {
-    font-weight: 600;
-}
-
-
-.textForm {
-    height: 190px;
-    margin: 10px 0;
-}
-
-textarea {
-    width: 100%;
-    height: 100%;
-    border: #fff;
-    outline: none;
-    resize: none;
-    font-size: 20px;
-    color: #000;
-}
-
-textarea::placeholder{
-    font-size: 20px;
-    color: #000;
-}
-
-input[type="text"] {
-    width: 100%;
-    border-radius: 50px;
-    margin-top: 10px;
-    padding: 1px 10px;
-    outline: none;
-    border: 2px solid var(--green);
-}
-
-input::placeholder {
-    font-size: 15px;
-    color: #000;
-}
-
-.optionsForm {
-    background-color: var(--green);
-    border-radius: 50px;
-    padding: 0 55px;
-    margin-bottom: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.optionsForm p {
-    font-size: 15px;
-    color: var(--dark-green);
-    font-weight: 500;
-    margin: 0;
-}
-
-input[type="file"] {
-    display: none;
-}
-
-label .bi {
-    color: var(--dark-green);
-    font-size: 21px;
-    padding: 0 15px;
-}
-
-#PubForm {
-    width: 100%;
-    letter-spacing: 0.3cap;
-    font-weight: 600;
-    color: #fff;
-    align-items: center;
-    padding: 8px;
-}
-
-
-button.closeButton {
-    position: absolute;
-    top: 70px;
-    right: 400px;
-    background: none;
-    border: none;
-    font-size: 30px;
-    cursor: pointer;
-    z-index: 999;
-}
-
-.closeButton i {
+#remove-media i {
+    font-size: 4rem;
     color: var(--dark-green);
 }
