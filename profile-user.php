@@ -1,8 +1,9 @@
 <?php
-    session_start();
-    require "conection.php";
-    require "functions/side-bar.php";
-    require "functions/header.php";
+session_start();
+require "conection.php";
+require "functions/side-bar.php";
+require "functions/header.php";
+require "functions/forms.php";
 
 ?>
 
@@ -16,79 +17,188 @@
     <!-- icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- css -->
-    <link rel="stylesheet" href="resources/css/panel.css">
+    <link rel="stylesheet" href="resources/css/style.css">
     <link rel="stylesheet" href="resources/css/all.css">
+    <link rel="stylesheet" href="resources/css/profile-user.css">
     <link rel="stylesheet" href="resources/css/forms.css">
     <!-- js -->
     <script src="resources/js/bootstrap.bundle.min.js"></script>
     <title>Perfil de usuario</title>
 </head>
 <body>
-    <nav class="navbar bg-body-tertiary">
-        <?php echo Head(); ?>
-    </nav>
+    <header class="header">
+        <section class="flex">
+            <?php echo Head(); ?>
+        </section>
+    </header>
 
-    <div class="wrapper">
+    <div class="nav" id="navbar">
+        <?php
+            echo SidebarProfile();
+        ?>
+    </div>
 
-        <?php echo SidebarProfile(); ?>
-
-        <div class="main-content">
-            <div class="content">
-                <input type="button" class="btnPubs" value="  Comparte con la comunidad ... "  onclick="showForm()">
-                <div id="optsPubs">
-                    <button class="optsPubs"><i class="bi bi-image"></i> Imagen</button>
-                    <button class="optsPubs"><i class="bi bi-camera-reels"></i></i> Video</button>
+    <div class="content">
+        <div class="pubs__container">
+            <div class="form__create">
+                <button id="open__form" class="form__insertText">Comparte con la comunidad ...</button>
+                <div class="form__options">
+                    
+                    
                 </div>
             </div>
+            <hr id="form__line">
+
+            <?php
+            echo Modal_Create();
+
+            date_default_timezone_set('America/Mexico_City'); // Establecer la zona horaria a la de México
+            // Verificar si el usuario ha iniciado sesión y obtener su ID de usuario
+            if (isset($_SESSION["user_id"])) {
+                $user_id = $_SESSION["user_id"];
+
+                // Consulta SQL para seleccionar las publicaciones del usuario actual
+                $sql = "SELECT *, user.user_name AS user_name 
+                        FROM post
+                        INNER JOIN user ON post.user_id = user.user_id
+                        WHERE post.user_id = $user_id";
+
+                $res = mysqli_query($con, $sql);
+                
+                if (mysqli_num_rows($res) > 0) {
+                    // Imprimir los datos de cada publicación
+                    while ($row = mysqli_fetch_assoc($res)) {
+                        if ($row["estado"] === "revisado") {
+                            $post_id = $row['post_id'];
+                            ?>
+                            <div class="pubs__row">
+                                <div class="pubs__header">
+                                <div id="myModal-<?php echo $post_id; ?>" class="modal">
+                                        <div class="modal-content">
+                                            <div class="form__container">
+                                                <div class="form__label">
+                                                    <b>Editar publicación</b>
+                                                    <button id="close__form"><i class="bi bi-x-circle-fill close"></i></button>
+                                                </div>
+                                                <hr>
+                                                <form id="FormCreate" action="edit_post.php" method="post" enctype="multipart/form-data">
+                                                    <input type="hidden" name="post_id" value="<?php echo $row['post_id']; ?>">
+                                                    <div class="form__user">
+                                                        <div><?php echo $_SESSION["user_name"]; ?></div>
+
+                                                        <div class="form__menu">
+                                                            <select name="topic-post">
+                                                                <option selected disabled>Temas</option>
+                                                            <?php
+                                                                $sql1 = "SELECT topic_name FROM topics";
+                                                                $result1 = $con->query($sql1);
+
+                                                                // mostrar los temas
+                                                                if ($result1->num_rows > 0) {
+                                                                    while ($row1 = $result1->fetch_assoc()) {
+                                                                        echo '
+                                                                        <option>'. $row1["topic_name"] .'</option>
+                                                                        ';
+                                                                    }
+                                                                } 
+                                                            ?>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form__title">
+                                                        <input type="text" name="title-post" value="<?php echo $row['post_titulo']?>">
+                                                    </div>
+                                                    <div class="form__text">
+                                                        <textarea name="text-post"><?php echo $row['post_contenido']; ?></textarea>
+                                                    </div>
+
+                                                    <figure class="form__image">
+                                                        <?php if (!empty($row['post_image'])): ?>            
+                                                            <img src="data:image/jpeg;base64,<?php echo base64_encode($row['post_image']); ?>"/>
+                                                        <?php endif; ?>
+                                                        <button type="button" id="remove-media"><i class="bi bi-x-circle-fill"></i></button>
+                                                    </figure>
+
+                                                    <input type="file" name="image-post">
+                                                    
+                                                    <div class="form__add">
+                                                        <p>Agrega a tu publicación</p>
+                                                        <div>
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <button class="form__input" id="PubForm" name="edit">Guardar</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <?php echo $row["user_name"] . " - " . $row["post_creacion"]; ?>
+                                    <div class="pubs__edit">
+                                        <div class="pubs__editBtn">
+                                            <span><i class="bi bi-three-dots"></i></span>
+                                        </div>
+                                        <ul class="options__edit">
+                                            <button class="option__edit openModalButton" data-postid="<?php echo $post_id; ?>">
+                                                <i class="bi bi-pencil-fill"></i>
+                                                <span>Editar</span>
+                                            </button>
+                                            <form method="post" action="delete_post.php">
+                                                <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
+                                                <button class="option__edit" data-postid="<?php echo $post_id; ?>">
+                                                    <i class="bi bi-trash3-fill"></i>
+                                                    <span>Eliminar</span>
+                                                </button>
+                                            </form>
+                                        </ul>
+                                    </div>
+                                    <div id="theme-section"> <?php echo $row["post_tema"]; ?></div>
+                                </div>
+                                <div class="pubs__title">
+                                    <b><?php echo $row["post_titulo"]; ?></b>
+                                </div>
+                                <div class="pubs__text">
+                                    <?php echo $row["post_contenido"]; ?>
+                                </div>
+                                <div class="pubs__image">
+                                    <?php if (!empty($row["post_image"])): ?>
+                                        <img src="data:image/jpg/png/jpeg;base64,<?php echo base64_encode($row['post_image']);?>"/>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="pubs__options">
+                                    <div class="pubs__likes">
+                                        hola
+                                    </div>
+                                    <div class="pubs__comments">
+                                        hola2
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <?php
+                        }
+                    }
+                } else {
+                    echo "No hay publicaciones.";
+                }
+            }
+            ?>
         </div>
     </div>
 
-    <div id="BckgForm">
-    <button onclick="closeForm()" class="closeButton"><i class="bi bi-x-circle"></i></button>
-        <form id="FormCreate" action="create_post.php" method="post" enctype="multipart/form-data">
-            <div id="contentForm">
-                <h1>Crear publicación</h1>
-                <hr class="pForm">
-                <div class="headForm">
-                    <div class="userForm"><?php echo $_SESSION["user_name"]; ?></div>
-                    <input type="button" class="topicsForm" value="TEMAS" onclick="showTopics()">
-                    <div id="topics">
-                        <?php
-                            $sql = "SELECT topic_name FROM topics";
-                            $result = $con->query($sql);
-
-                            if ($result->num_rows > 0) {
-                                while($row = $result->fetch_assoc()) {
-                                    echo "<div id='topic-options'>";
-                                    echo "<input type='radio' class='btn-options' name='topic-post' value='". $row["topic_name"] ."'>";
-                                    echo "<label class='btn btn-text'>". $row["topic_name"] ."</label>";
-                                    echo "</div>";
-                                }
-                            }  
-                        ?>
-                    </div>
-                </div>
-                <div>
-                    <input type="text" name="title-post" placeholder="Escribe un título">
-                </div>
-                <div class="textForm">
-                    <textarea placeholder="Comparte con la comunidad" name="text-post"></textarea>
-                </div>
-                <div class="optionsForm">
-                    <p>Agrega a tu publicación</p>
-                    <div>
-                    <input type="file" id="fileImage" name="image-post" accept="image/*" />
-                    <label for="fileImage"><i class="bi bi-image"></i></label>
-                    <input type="file" id="fileVideo" name="video-post" accept="video/*" />
-                    <label for="fileVideo"><i class="bi bi-camera-reels"></i></label>
-                    </div>
-                </div>
-                <button class="Btn" id="PubForm" name="create">Publicar</button>
-            </div>
-        </form>
-    </div>
-
     <script src="resources/js/script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        const optionMenus = document.querySelectorAll(".pubs__edit");
+        optionMenus.forEach(menu => {
+            
+            const selectBtn = menu.querySelector(".pubs__editBtn");
+            selectBtn.addEventListener("click", () => {
+                menu.classList.toggle("active");
+            });
+        });
+    });       
+    </script>
 </body>
 
 </html>

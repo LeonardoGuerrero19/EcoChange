@@ -1,0 +1,272 @@
+section {
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.6rem 2rem;
+    cursor: pointer;
+    font-size: 2rem;
+    color: white;
+    background-color: var(--dark-green);
+    box-shadow: var(--shadow);
+    border-radius: 30px;
+    text-align: center;
+}
+
+.btn:hover {
+    color: #000;
+    font-weight: 600;
+    transition: 0.4s ease-in-out;
+}
+
+.header {
+    width: 100%;
+    position: sticky;
+    top: 0; left: 0; right: 0;
+    background-color: var(--green);
+    z-index: 1000;
+}
+
+.header .flex {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header .flex .logo {
+    width: 150px;
+    margin: 5px 0;
+}
+
+.search-container {
+    position: relative;
+}
+
+#search-input {
+    background: url(https://cdn0.iconfinder.com/data/icons/slim-square-icons-basics/100/basics-19-32.png) no-repeat 5px 50%;
+    background-color: #fff;
+    width: 400px;
+    padding: 5px;
+    padding-left: 35px;
+    border-radius: 50px;
+    border: 2px solid #fff;
+    font-size: 1.8rem;
+}
+
+#search-input:hover {
+    border-color: var(--dark-green);
+}
+
+#clear-btn {
+    display: none;
+    position: absolute;
+    right: 10px;
+    font-size: 20px;
+    color: var(--dark-green);
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+
+/* side bar */
+.nav {
+    width: 250px;
+    height: 100%;
+    font-size: 1.8rem;
+    background-color: var(--green);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    position: fixed;
+}
+
+.nav__container {
+    width: 100%;
+    margin: 25px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.nav__list, 
+.nav__items {
+    display: grid;
+}
+
+.nav__list {
+    row-gap: 2.5rem;
+}
+
+.nav__items {
+    row-gap: 1.5rem;
+}
+
+a.home {
+    text-align: center;
+    text-decoration: none;
+}
+
+.nav__link {
+    width: 100%;
+    color: var(--dark-green);
+    font-size: 2.1rem;
+    padding: 0.8rem 0;
+    border-radius: 30px;
+    transition: 0.4s ease-in-out;
+}
+
+.home:hover {
+    background-color: var(--dark-green);
+    color: #fff;
+}
+
+.nav__icon {
+    margin-right: 1rem;
+}
+
+.nav__user, .nav__user:hover{
+    width: 100%;
+    color: var(--dark-green);
+    font-size: 2.1rem;
+    padding: 0.8rem 0;
+    border-radius: 30px;
+    border: 1px solid var(--dark-green);
+    text-align: center;
+    text-decoration: none;
+    margin-bottom: 25px;
+}
+
+
+/* Dropdown */
+.nav__dropdown {
+    overflow: hidden;
+    max-height: 30px;
+    transition: 0.4s ease-in-out;
+}
+
+.nav__dropdown p {
+    letter-spacing: 0.8rem;
+    color: var(--dark-green);
+    font-size: 2.2rem;
+    margin-left: 1rem;
+}
+
+.nav__dropdown-content {
+    display: grid;
+    row-gap: 1rem;
+    padding: 0.75rem 2.5rem 0.75rem 1.8rem;
+}
+
+.nav__dropdown-item {
+    color: var(--dark-green);
+    text-decoration: none;
+    border-radius: 30px;
+    padding: 0.5rem 1rem;
+}
+
+.nav__dropdown-item:hover {
+    background-color: var(--dark-green);
+    color: #fff;
+    transition: 0.4s ease-in-out;
+}
+
+.nav__dropdown-icon {
+    margin-left: 85px;
+}
+
+/* show collapse */
+.nav__dropdown:hover {
+    max-height: 100rem;
+    transition: 0.4s;
+}
+
+/* rotate icon */
+.nav__dropdown:hover .nav__dropdown-icon{
+    transform: rotate(-180deg);
+}
+
+/* container */
+.content {
+    margin-left: 250px;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* section pubs */
+.pubs__container {
+    width: 70%;
+    font-size: 2.2rem;
+}
+
+.pubs__row {
+    border-radius: 30px;
+    padding: 15px;
+}
+
+.pubs__row:hover {
+    background-color: var(--gray);
+    transition: 0.1s ease-in-out;
+}
+
+.pubs__header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.8rem;
+}
+
+.pubs__text {
+    font-size: 1.8rem;
+    margin: 1rem 0;
+}
+
+.pubs__image img {
+    width: 100%;
+    border-radius: 30px;
+}
+
+.pubs__options {
+    background-color: chocolate;
+    margin-top: 1rem;
+    display: inline-flex;
+}
+
+.pubs__likes, .pubs__comments{
+    background-color: var(--green);
+    margin-right: 15px;
+    border-radius: 30px;
+    padding: 0.2rem 15px;
+}
+
+.other-section {
+    background-color: blue;
+}
+
+
+
+
+/* media queries */
+
+@media (max-width:991px) {
+    html {
+        font-size: 50%;
+    }
+
+}
+
+@media (max-width:768px) {
+    .sidebar {
+        width: 25%;
+    }
+}
+
+@media (max-width:450px) {
+    html {
+        font-size: 50%;
+    }
+
+}

@@ -191,7 +191,7 @@ if(isset($_POST['sign-up'])) {
         } else{
             // Insertar el usuario solo si el correo electrónico no está en uso y se acepta la contraseña.
             $password_hashed = password_hash($password, PASSWORD_DEFAULT); // Haseo de la contraseña
-            $stmt = $con->prepare("INSERT INTO user (user_name, user_email, user_password, user_rol) VALUES (?, ?, ?, 'usuario_registrado')");
+            $stmt = $con->prepare("INSERT INTO user (user_name, user_email, user_password, user_rol, user_photo) VALUES (?, ?, ?, 'usuario_registrado', 'default.png')");
             $stmt->bind_param("sss", $name, $email, $password_hashed);
 
             if ($stmt->execute()) {
@@ -224,6 +224,22 @@ if(isset($_POST['sign-up'])) {
     <div id="alert-placeholder"></div>
 </div>
 
-    <script src="resources/js/script.js"></script>
+    <script>
+    const container = document.getElementById('container');
+
+    const registerBtn = document.getElementById('register');
+
+    const loginBtn = document.getElementById('login');
+
+    registerBtn.addEventListener('click', () =>
+    {
+    container.classList.add("active");
+    })
+
+    loginBtn.addEventListener('click', () =>
+    {
+    container.classList.remove("active");
+    })
+    </script>
 </body>
 </html>
