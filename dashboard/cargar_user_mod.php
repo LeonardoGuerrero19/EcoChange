@@ -1,32 +1,24 @@
 <?php
-// Incluir el archivo de conexión a la base de datos
 require "../conection.php";
 
-// Verificar si se ha enviado un rol a través de la solicitud POST
-if(isset($_POST['rol'])) {
+if (isset($_POST['rol'])) {
     $rol = $_POST['rol'];
-    $search = isset($_POST['search']) ? mysqli_real_escape_string($con, $_POST['search']) : '';
+    $search = isset($_POST['search']) ? $_POST['search'] : '';
 
-    // Consulta SQL para seleccionar los usuarios según el rol especificado y el término de búsqueda
     $sql = "SELECT user_id, user_name, user_email, user_rol, DATE_FORMAT(user_registration, '%Y-%m-%d %H:%i:%s') as user_registration 
             FROM user 
             WHERE user_rol = '$rol'";
 
-    // Añadir la lógica de búsqueda si se ha enviado un término de búsqueda
     if (!empty($search)) {
         $sql .= " AND (user_name LIKE '%$search%' OR user_email LIKE '%$search%')";
     }
 
     $result = mysqli_query($con, $sql);
 
-    // Verificar si se encontraron resultados
     if (mysqli_num_rows($result) > 0) {
-        // Mostrar los usuarios
         while ($row = mysqli_fetch_assoc($result)) {
             echo "<div class='user'>";
-            echo "<div class='header-text'>";
-            echo "Nombre de Usuario: " . $row["user_name"];
-            echo "</div>";
+            echo "<div class='header-text'>Nombre de Usuario: " . $row["user_name"] . "</div>";
             echo "<p class='text'>Correo Electrónico: " . $row["user_email"] . "</p>";
             echo "<p class='text'>Rol de Usuario: " . $row["user_rol"] . "</p>";
             echo "<p class='text'>Fecha de Registro: " . $row["user_registration"] . "</p>";
@@ -46,7 +38,7 @@ if(isset($_POST['rol'])) {
             echo "</div>";
         }
     } else {
-        echo "<div class='no_user'>No se han encontrado usuarios con el rol '$rol' y el término de búsqueda '$search'.</div>";
+        echo "<div class='no_user'>No se han encontrado usuarios con el rol '$rol'.</div>";
     }
 } else {
     echo "No se especificó un rol.";
