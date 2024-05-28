@@ -34,12 +34,12 @@ if(isset($_POST['status'])) {
                 echo "<div class='botones'>";
                 echo "<form action='marcar_revisado.php' method='post'>";
                 echo "<input type='hidden' name='post_id' value='" . $row["post_id"] . "'>";
-                echo "<button type='submit'>Aceptar Publicación</button>";
+                echo "<button type='submit'>Aceptar</button>";
                 echo "</form>";
 
                 echo "<form action='rechazar_posts.php' method='post'>";
                 echo "<input type='hidden' name='post_id' value='" . $row["post_id"] . "'>";
-                echo "<button type='submit'>Rechazar publicación</button>";
+                echo "<button type='submit'>Rechazar</button>";
                 echo "</form>";
                 echo "</div>";
 

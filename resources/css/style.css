@@ -16,7 +16,7 @@ section {
 }
 
 .btn:hover {
-    color: #000;
+    color: var(--dark-green);
     font-weight: 600;
     transition: 0.4s ease-in-out;
 }
@@ -26,7 +26,7 @@ section {
     position: sticky;
     top: 0; left: 0; right: 0;
     background-color: var(--green);
-    z-index: 1000;
+    z-index: 1;
 }
 
 .header .flex {
@@ -43,6 +43,10 @@ section {
 
 .search-container {
     position: relative;
+}
+
+.search-container-mod{
+    margin-right: 400px;
 }
 
 #search-input {
@@ -234,9 +238,13 @@ a.home {
 }
 
 .pubs__options {
-    background-color: chocolate;
     margin-top: 1rem;
     display: inline-flex;
+}
+
+.like-btn {
+    background-color: transparent;
+    color: var(--dark-green);
 }
 
 .pubs__likes, .pubs__comments{
@@ -246,12 +254,144 @@ a.home {
     padding: 0.2rem 15px;
 }
 
-.other-section {
-    background-color: blue;
+.header__theme b {
+    font-size: 3rem;
+    letter-spacing: 0.5rem;
+}
+
+.header__theme p {
+    font-size: 2rem;
+    padding-top: 10px;
+}
+
+#theme-section {
+    background-color: var(--dark-green);
+    border-radius: 30px;
+    padding: 5px 15px;
+}
+
+#theme-section a{
+    color: #fff;
+    text-decoration: none;
 }
 
 
+/* favorites section*/
+.fav__container {
+    width: 26%;
+}
 
+.fav__title {
+    background-color: var(--green);
+    border-radius: 30px;
+    margin: 20px 15px;
+    box-shadow: var(--shadow);
+}
+
+.fav__title p {
+    font-size: 2.2rem;
+    letter-spacing: 0.8rem;
+    text-align: center;
+    padding: 5px;
+}
+
+.fav__content {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 20px 15px;
+    border: 1px solid var(--dark-green);
+    border-radius: 30px;
+}
+
+.fav__theme {
+    padding-left: 10px;
+    margin: 10px;
+    color: var(--dark-green);
+}
+
+.fav__theme a {
+    text-decoration: none;
+    color: var(--dark-green);
+}
+
+.fav__theme p {
+    font-size: 1.8rem;
+    font-weight: 400;
+}
+
+.fav__button {
+    font-size: 2rem;
+    color: #fff;
+    font-weight: 600;
+    padding: 5px;
+    width: 90%;
+    background-color: var(--dark-green);
+    border-radius: 30px;
+    margin: 15px;
+    box-shadow: var(--shadow);
+}
+
+/* edit profile */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 10; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgba(0, 0, 0, 0.4); /* Fondo oscuro con opacidad del 60% */
+}
+
+.modal-content {
+    font-size: 2.2rem;
+    background-color: #fff;
+    padding: 20px;
+    width: 550px;
+    border-radius: 30px;
+    box-shadow: var(--shadow);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.text__edit {
+    color: var(--dark-green);
+    font-weight: 600;
+    font-size: 3.5rem;
+}
+
+.modal-content textarea {
+    border: 2px solid var(--dark-green);
+    border-radius: 30px;
+    height: 60px;
+    width: 100%;
+    resize: none;
+    padding: 10px 20px;
+}
+
+.modal-content button {
+    margin-top: 15px;
+}
+
+.pubs__button {
+    background-color: transparent;
+    color: var(--dark-green);
+}
+
+.comment {
+    text-align: start;
+    font-size: 1.8rem;
+    padding: 10px 20px;
+    border-radius: 30px;
+    transform: var(--transition);
+}
+
+.comment:hover {
+    background-color: var(--gray);
+}
 
 /* media queries */
 

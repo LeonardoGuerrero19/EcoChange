@@ -107,7 +107,7 @@
     font-weight: 600;
 }
 
-.options__edit .option__edit:hover{
+.options__edit {
     background: var(--gray);
 }
 

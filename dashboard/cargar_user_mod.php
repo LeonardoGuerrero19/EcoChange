@@ -19,7 +19,7 @@ if(isset($_POST['rol'])) {
             // Agregar la información que desees mostrar
             echo "<div class='user'>";
             echo "<div class='header-text'>";
-            echo "Nombre de Usuario: " . $row["user_name"];
+            echo "Nombre de Usuario: <br>" . $row["user_name"];
             echo "</div>";
             echo "<p class='text'>Correo Electrónico: " . $row["user_email"] . "</p>";
             echo "<p class='text'>Rol de Usuario: " . $row["user_rol"] . "</p>";

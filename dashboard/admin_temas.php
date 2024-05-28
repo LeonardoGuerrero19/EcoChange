@@ -3,6 +3,7 @@
     require "../conection.php";
     require "../functions/side-bar.php";
     require "../functions/header.php";
+    require "../functions/forms.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +16,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- CSS personalizado -->
     <link rel="stylesheet" href="../resources/css/style.css">
+    <link rel="stylesheet" href="../resources/css/panel_mod.css">
     <link rel="stylesheet" href="../resources/css/all.css">
     <!-- JavaScript -->
     <script src="../resources/js/bootstrap.bundle.min.js"></script>
@@ -35,33 +37,16 @@
     </div>
 
     <!-- Wrapper -->
-    <div class="">
-        <!-- Barra lateral -->
-        
+    <div class="content">   
         <!-- Contenido principal -->
         <div class="main-content">
             <!-- Botón para mostrar el formulario de manera flotante -->
             <div class="content-header">
-                <h1>Administrador de los temas</h1>
                 <button id="show-form-btn" class="agregar-tema-btn">Agregar Nuevo Tema</button>
             </div>
 
-
             <!-- Ventana modal -->
-            <div class="modal" id="add-topic-form-container" style="display: none;">
-                <h2>Agregar Nuevo Tema</h2>
-                <form class="add-topic-form" action="agregar_temas.php" method="POST">
-                    <div class="form-group">
-                        <label for="topic_name">Nombre del Tema:</label>
-                        <input type="text" id="topic_name" name="topic_name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="topic_desc">Descripción del Tema:</label>
-                        <textarea id="topic_desc" name="topic_desc" rows="4" required></textarea>
-                    </div>
-                    <button type="submit">Agregar Tema</button>
-                </form>
-            </div>
+            <?php echo Modal_Add_Topic(); ?>
 
             <!-- Fondo gris oscurecido -->
             <div class="overlay" id="overlay" style="display: none;"></div>

@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- css -->
     <link rel="stylesheet" href="../resources/css/style.css">
+    <link rel="stylesheet" href="../resources/css/panel_mod.css">
     <link rel="stylesheet" href="../resources/css/all.css">
     <!-- js -->
     <script src="../resources/js/bootstrap.bundle.min.js"></script>
@@ -34,9 +35,7 @@
         <?php echo SidebarMod(); ?>
     </div>
 
-    <div class="">
-        <!-- Barra lateral -->
-        
+    <div class="content">        
         <!-- Mostrar usuarios -->
         <div class="main-content">
             <div class="estado">

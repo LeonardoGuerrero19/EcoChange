@@ -51,15 +51,39 @@
                     <p>Agrega a tu publicación</p>
                     <div>
                         <label for="fileImage" class="custom-file-upload"><i class="bi bi-images"></i></label>
-                        <input id="fileImage" type="file" name="image-post" accept="image/*">
+                        <input id="fileImage" type="file" name="image-post" accept="image/*" style="display:none;">
                         <label for="fileVideo" class="custom-file-upload"><i class="bi bi-camera-reels"></i></label>
-                        <input id="fileVideo" type="file" name="video-post" accept="video/*">
+                        <input id="fileVideo" type="file" name="video-post" accept="video/*" style="display:none;">
                     </div>
                 </div>
                 <button class="form__input" id="PubForm" name="create">Publicar</button>
             </form>
         </div>
     </dialog>
+<?php
+    }
+
+    function Modal_Add_Topic() {
+?>
+    <div class="modal" id="add-topic-form-container" style="display: none;">
+        <div class="form__label">
+            <b>Agregar nuevo tema</b>
+        </div>
+        <hr>
+        <form class="add-topic-form" action="agregar_temas.php" method="POST">
+            <div class="form-group">
+                <label for="topic_name">Nombre</label>
+                <input type="text" id="topic_name" name="topic_name" required>
+            </div>
+            <div class="form-group">
+                <label for="topic_desc">Descripción</label>
+                <textarea id="topic_desc" name="topic_desc" rows="4" required></textarea>
+            </div>
+            <div class="form_btn">
+                <button type="submit">Agregar</button>
+            </div>
+        </form>
+    </div>
 <?php
     }
 ?>
